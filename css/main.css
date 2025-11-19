@@ -1,0 +1,53 @@
+.overlay-menu{
+    display:none
+}
+header{
+    display:flex;
+    justify-content: space-between;
+    top: 20px;
+    align-items: center;
+    margin: 0 auto;
+    background-color: black;
+    border-radius: 30px;
+    padding: 10px 20px;            
+    max-width: 40%;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    z-index: 999;
+}
+.logo{
+    color: white;
+}
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;                  /* space between links */
+}
+.navbar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: white;             /* highlight color on hover */
+}
+
+.overlay-menu ul li {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.overlay-menu.active ul li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger effect */
+.overlay-menu.active ul li:nth-child(1) { transition-delay: 0.1s; }
+.overlay-menu.active ul li:nth-child(2) { transition-delay: 0.2s; }
+.overlay-menu.active ul li:nth-child(3) { transition-delay: 0.3s; }
+.overlay-menu.active ul li:nth-child(4) { transition-delay: 0.4s; }
+.overlay-menu.active ul li:nth-child(5) { transition-delay: 0.5s; }
+.overlay-menu.active ul li:nth-child(6) { transition-delay: 0.6s; }
