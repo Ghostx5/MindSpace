@@ -5,6 +5,7 @@ header{
     display:flex;
     justify-content: space-between;
     top: 20px;
+    position: sticky;
     align-items: center;
     margin: 0 auto;
     background-color: black;
@@ -16,11 +17,12 @@ header{
 }
 .logo{
     color: white;
+    margin: 0px 20px;
 }
 .navbar ul {
     display: flex;
     list-style: none;
-    gap: 30px;                  /* space between links */
+    gap: 30px;                  
 }
 .navbar ul li a {
     text-decoration: none;
@@ -30,7 +32,7 @@ header{
 }
 
 .navbar ul li a:hover {
-    color: white;             /* highlight color on hover */
+    color: white;             
 }
 
 .overlay-menu ul li {
