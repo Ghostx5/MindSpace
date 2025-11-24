@@ -114,6 +114,125 @@ body {
 }
 p{
     color: white;
-    margin: 60px 100px;
     font-family: "Inter", sans-serif;
+}
+.hero{
+    margin: 100px 250px 50px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.cname{
+    font-family: "Monsterrat", sans-serif;
+    color:#689891;
+    font-size: 150px;
+    margin: 20px 0;
+}
+
+#description1{
+    font-family: "Monsterrat", sans-serif;
+    color:#d1cfc6;
+    font-size: 50px;
+    margin: 20px 0;
+}
+.schedule-wrapper{
+    display:flex;    
+    flex-wrap: wrap;
+    background: #689891;
+    box-shadow: #4a6e69 2px 5px;
+    border-radius: 36px;
+    margin: 20px 0;
+    border: none;
+    font-family: "Inter", sans-serif;
+    font-weight: Bold;
+    align-content: center;
+    justify-content: center;
+    font-size: 30px;
+    height: 100px;
+    width: 500px;
+}
+.schedule-button{
+    display: inline;
+    text-decoration: none;
+    color: white;
+    align-items: center;
+}
+.disorder{
+    justify-content: right;
+    align-items: center;
+    left: 0;
+    margin: 200px 100px 0px 200px;
+    display: flex;
+}
+.disorder-wrapper{
+    display: block;
+    background: #689891;
+    box-shadow: #4a6e69 2px 5px;
+    border-radius: 36px;
+    padding: 20px 60px 60px;
+}
+.disorder-wrapper h1{
+    font-family: "Monsterrat", sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 120px;
+    text-align: center;
+    margin:0;
+    text-shadow:#4a6e69 5px 3px;
+}
+.Bold{
+    font-weight: Bold;
+}
+.disorder-wrapper p{
+    font-family: "Inter", sans-serif;
+    font-weight: Bold;
+    font-size: 30px;
+    text-shadow:#4a6e69 2px 1px;
+}
+.disorder-wrapper {
+    display: none;
+}
+
+.disorder-wrapper.active {
+    display: block;
+}
+
+.navigation-disorder{
+    display:flex;
+    flex-direction: column;
+    align-items: center; 
+    margin: 0 120px 0 0;
+}
+
+.arrow {
+    display: inline;
+    font-size: 150px;
+    cursor: pointer;
+    user-select: none;
+    padding: 20px;
+    color: #4a6e69;
+}
+.arrow:hover {
+    color: #ffffff;
+}
+.dots {
+    display: flex;
+    flex-direction: column; /* stack vertically */
+    align-items: center;
+    gap: 15px;              /* space between dots */
+}
+
+.dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;     /* makes it a circle */
+    background-color: #4a6e69;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #ffffff; /* highlight current disorder */
 }
