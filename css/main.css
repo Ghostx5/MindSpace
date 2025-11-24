@@ -26,7 +26,7 @@ body {
     top: 50%;
     transform: translateY(-50%);
     height: 22px;
-    width: 2px;
+    width: 3px;
     background-color: white;
     border-radius: 2px;
 }
@@ -47,7 +47,9 @@ body {
 .navbar ul li a {
     text-decoration: none;
     color: white;
-    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: Bold;
     transition: color 0.3s ease;
 }
 .navbar ul li {
