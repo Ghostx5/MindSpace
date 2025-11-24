@@ -14,12 +14,12 @@ body {
     align-items: center;
     justify-content: space-between;
     display: flex;
-    margin: 20px 40px;
+    margin: 40px 60px;
 }
 .nav-wrapper{
     width: fit-content;
 }
-.scheduler-wrapper{
+.login-wrapper{
     display:flex;
     flex-wrap: wrap;
     background: #689891;
@@ -34,7 +34,8 @@ body {
     height: 60px;
     width: 120px;
 }
-.scheduler-button{
+.login-button{
+    display: inline;
     text-decoration: none;
     color: white;
     align-items: center;
@@ -53,10 +54,13 @@ body {
 .navbar{
     background: #689891;
     position: fixed;
-    top: 20px;
-    transform: translatex(-50%) translateY(+50%);
+    left: 50%; 
+    top: 40px;
+    transform: translatex(-50%);
     border-radius: 36px;
     box-shadow: #4a6e69 2px 5px;
+    height: 60px;
+    align-content: center;
 }
 .navbar ul {
     display: flex;
@@ -102,8 +106,9 @@ body {
     display: flex;
 }
 .logo img{
-    display: flex;
-    width: 100px;
+    display: inline;
+    width: fit-content;
+    height: 60px;
     left: 10px;
     z-index: 1000;
 }
