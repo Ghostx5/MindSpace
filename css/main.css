@@ -19,7 +19,7 @@ body {
 .nav-wrapper{
     width: fit-content;
 }
-.login-wrapper{
+.login-btn-wrapper{
     display:flex;
     flex-wrap: wrap;
     background: #689891;
@@ -159,4 +159,74 @@ p{
     text-decoration: none;
     color: white;
     align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+.login-wrapper{
+    margin: 200px 400px;
+    padding: 20px;
+    background-color: #292929;
+    border-radius: 36px;
+    box-shadow: black 5px 4px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  /* ← STACKS everything vertically */
+}
+.backbutton-wrapper{
+    display:flex;
+    align-items: flex-start;
+    justify-content: center;
+    color: white;}
+.back-btn{
+    background: none;
+    border: none;
+    color: white;
+    align-items: center;
+    display:inline-flex;
+    gap: 5px;
+}
+.login-arrow{
+    color:green;
+    background-color: transparent;
+    border: none;
+}
+#login-logo{
+    margin: 40px 0 20px 0;
+    max-width: 100px;
+}
+#wlcmsg{
+    color:white;
+}
+.info{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-options{
+    display:flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+.login-option-img {
+    width: 20px;       /* perfect size */
+    height: fit-content;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.login-option-img:hover {
+    transform: scale(1.1);
 }
