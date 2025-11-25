@@ -34,7 +34,7 @@ body {
     height: 60px;
     width: 120px;
 }
-.login-button{
+.login-direct{
     display: inline;
     text-decoration: none;
     color: white;
@@ -170,10 +170,16 @@ p{
 
 
 
-
+#login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 .login-wrapper{
-    margin: 200px 400px;
-    padding: 20px;
+    width: fit-content;
+    height: fit-content;
+    padding: 50px;
     background-color: #292929;
     border-radius: 36px;
     box-shadow: black 5px 4px;
@@ -185,13 +191,17 @@ p{
 }
 .backbutton-wrapper{
     display:flex;
-    align-items: flex-start;
-    justify-content: center;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
     color: white;}
 .back-btn{
     background: none;
     border: none;
     color: white;
+    font-family: "Monsterrat", sans-serif;
+    font-weight:bolder;
+    font-size: 20px;
     align-items: center;
     display:inline-flex;
     gap: 5px;
@@ -201,30 +211,96 @@ p{
     background-color: transparent;
     border: none;
 }
-#login-logo{
-    margin: 40px 0 20px 0;
-    max-width: 100px;
-}
+
 #wlcmsg{
+    color:white;
+    font-family: "Monsterrat", sans-serif;
+    font-size: 60px;
+    margin: 0;
     color:white;
 }
 .info{
     display:flex;
     flex-direction: column;
     align-items: center;
+    margin: 5 0 20px 0;
+}
+.info p{
+    font-family: "Monsterrat", sans-serif;
+    color:white;
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0;
+}
+.info a{
+    text-decoration: none;
+    font-family: "Monsterrat", sans-serif;
+    color:white;
+}
+.info a:hover{
+    color: #689891;
+}
+
+.login-logo{
+    width: 160px;        /* size of your black square */
+    height: 160px;
+    background:#202020;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;    /* optional, remove for a perfect square */
+    margin: 20px 0;
+}
+#login-logo{
+    width: 80%; 
+}
+.textbox{
+    color: white;
+    background-color:#1a191b;
+    border: none;
+    margin: 10px 0;
+    width:360px;
+    border-radius: 20px;
+    padding: 20px;
+}
+.text-fields{
+    margin-top:20px;
+}
+.login-button{
+    width: 100%;
+}
+#login-btn{
+    margin: 10px 0 20px 0;
+    border: none;
+    background-color:#689891;
+    font-family: "Monsterrat", sans-serif;
+    color: white;
+    font-weight: Bold;
+    font-size: 20px;
+    padding: 10px 20px;
+    width: 400px;
+    border-radius: 20px;
 }
 .login-options{
     display:flex;
+    width: 60px;     /* container stays stable */
+    height: 60px;
     gap: 20px;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
+    margin: 5px 0;
 }
 .login-option-img {
-    width: 20px;       /* perfect size */
+    background-color: #1a191b;
+    padding: 20px;
+    display:flex;  /* perfect size */
     height: fit-content;
     cursor: pointer;
     transition: transform .2s;
+    width: 80px;     /* ← consistent icon size */
+    height: 30px;  
+    object-fit: contain;
+    border-radius:20px;
 }
 
 .login-option-img:hover {
