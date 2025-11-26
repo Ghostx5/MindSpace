@@ -126,14 +126,14 @@ p{
 
 }
 .cname{
-    font-family: "Monsterrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     color:#689891;
     font-size: 150px;
     margin: 20px 0;
 }
 
 #description1{
-    font-family: "Monsterrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     color:#d1cfc6;
     font-size: 50px;
     margin: 20px 0;
@@ -179,7 +179,7 @@ p{
 .login-wrapper{
     width: fit-content;
     height: fit-content;
-    padding: 50px;
+    padding: 30px 50px 50px 50px;
     background-color: #292929;
     border-radius: 36px;
     box-shadow: black 5px 4px;
@@ -199,7 +199,7 @@ p{
     background: none;
     border: none;
     color: white;
-    font-family: "Monsterrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight:bolder;
     font-size: 20px;
     align-items: center;
@@ -214,7 +214,11 @@ p{
 
 #wlcmsg{
     color:white;
-    font-family: "Monsterrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
     font-size: 60px;
     margin: 0;
     color:white;
@@ -223,10 +227,10 @@ p{
     display:flex;
     flex-direction: column;
     align-items: center;
-    margin: 5 0 20px 0;
+    margin: 0 0 10px 0;
 }
 .info p{
-    font-family: "Monsterrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     color:white;
     font-size: 20px;
     font-weight: normal;
@@ -234,7 +238,7 @@ p{
 }
 .info a{
     text-decoration: none;
-    font-family: "Monsterrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     color:white;
 }
 .info a:hover{
@@ -249,7 +253,7 @@ p{
     justify-content: center;
     align-items: center;
     border-radius: 12px;    /* optional, remove for a perfect square */
-    margin: 20px 0;
+    margin: 0 0;
 }
 #login-logo{
     width: 80%; 
@@ -257,14 +261,14 @@ p{
 .textbox{
     color: white;
     background-color:#1a191b;
-    border: none;
+    border: 0.5px solid white;
+    font-size: 12px;
     margin: 10px 0;
     width:360px;
     border-radius: 20px;
     padding: 20px;
 }
 .text-fields{
-    margin-top:20px;
 }
 .login-button{
     width: 100%;
@@ -273,11 +277,11 @@ p{
     margin: 10px 0 20px 0;
     border: none;
     background-color:#689891;
-    font-family: "Monsterrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     color: white;
     font-weight: Bold;
     font-size: 20px;
-    padding: 10px 20px;
+    padding: 15px 20px;
     width: 400px;
     border-radius: 20px;
 }
@@ -292,9 +296,11 @@ p{
 }
 .login-option-img {
     background-color: #1a191b;
+    
     padding: 20px;
     display:flex;  /* perfect size */
     height: fit-content;
+    border: 0.5px solid white;
     cursor: pointer;
     transition: transform .2s;
     width: 80px;     /* ← consistent icon size */
