@@ -160,31 +160,47 @@ p{
     color: white;
     align-items: center;
 }
+
+
+
+
+
+
+
+
+
+
 .disorder{
-    justify-content: right;
-    align-items: center;
-    left: 0;
-    margin: 200px 100px 0px 200px;
     display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0 50px 0;
+    overflow: hidden;
 }
 .disorder-wrapper{
-    display: block;
+    display: none;
+    pointer-events: none;
+    opacity: 0;
     background: #689891;
     box-shadow: #4a6e69 2px 5px;
     border-radius: 36px;
-    padding: 20px 60px 60px;
+    padding: 40px 60px;
+    max-width: 900px;
+    min-width: 500px;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 0.6s ease;
+    position: absolute;
 }
 .disorder-wrapper h1{
     font-family: "Monsterrat", sans-serif;
     font-weight: 400;
     color: #ffffff;
-    font-size: 120px;
+    font-size: 60px;
     text-align: center;
     margin:0;
     text-shadow:#4a6e69 5px 3px;
-}
-.Bold{
-    font-weight: Bold;
 }
 .disorder-wrapper p{
     font-family: "Inter", sans-serif;
@@ -192,13 +208,16 @@ p{
     font-size: 30px;
     text-shadow:#4a6e69 2px 1px;
 }
-.disorder-wrapper {
-    display: none;
-}
 
 .disorder-wrapper.active {
     display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: none;
+    position: relative; /* bring active box into normal flow */
 }
+
+
 
 .navigation-disorder{
     display:flex;
@@ -225,14 +244,28 @@ p{
     gap: 15px;              /* space between dots */
 }
 
+
 .dot {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;     /* makes it a circle */
-    background-color: #4a6e69;
+    width: 30px;
+    height: 30px;
+    background: gray;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 5px;
+    transition: background 0.3s ease;
     cursor: pointer;
 }
 
 .dot.active {
-    background-color: #ffffff; /* highlight current disorder */
+    background: white;
 }
+
+.arrow {
+    cursor: pointer;
+    user-select: none;
+}
+
+.Bold{
+    font-weight: Bold;
+}
+
