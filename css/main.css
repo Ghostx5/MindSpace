@@ -165,6 +165,160 @@ p{
     color: white;
     align-items: center;
 }
+
+
+
+
+
+
+
+
+
+
+.disorder{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0 50px 0;
+    overflow: hidden;
+}
+.disorder-wrapper{
+    display: none;
+    pointer-events: none;
+    opacity: 0;
+    background: #689891;
+    box-shadow: #4a6e69 2px 5px;
+    border-radius: 36px;
+    padding: 40px 60px;
+    max-width: 900px;
+    min-width: 500px;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 0.6s ease;
+    position: absolute;
+}
+.disorder-wrapper h1{
+    font-family: "Monsterrat", sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 60px;
+    text-align: center;
+    margin:0;
+    text-shadow:#4a6e69 5px 3px;
+}
+.disorder-wrapper p{
+    font-family: "Inter", sans-serif;
+    font-weight: Bold;
+    font-size: 30px;
+    text-shadow:#4a6e69 2px 1px;
+}
+
+.disorder-wrapper.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: none;
+    position: relative; /* bring active box into normal flow */
+}
+
+
+
+.navigation-disorder{
+    display:flex;
+    flex-direction: column;
+    align-items: center; 
+    margin: 0 120px 0 0;
+}
+
+.arrow {
+    display: inline;
+    font-size: 150px;
+    cursor: pointer;
+    user-select: none;
+    padding: 20px;
+    color: #4a6e69;
+}
+.arrow:hover {
+    color: #ffffff;
+}
+.dots {
+    display: flex;
+    flex-direction: column; /* stack vertically */
+    align-items: center;
+    gap: 15px;              /* space between dots */
+}
+
+
+.dot {
+    width: 30px;
+    height: 30px;
+    background: gray;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 5px;
+    transition: background 0.3s ease;
+    cursor: pointer;
+}
+
+.dot.active {
+    background: white;
+}
+
+.arrow {
+    cursor: pointer;
+    user-select: none;
+}
+
+.Bold{
+    font-weight: Bold;
+}
+
+
+.hero{
+    margin: 100px 250px 50px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.cname{
+    font-family: "Monsterrat", sans-serif;
+    color:#689891;
+    font-size: 150px;
+    margin: 20px 0;
+}
+
+#description1{
+    font-family: "Monsterrat", sans-serif;
+    color:#d1cfc6;
+    font-size: 50px;
+    margin: 20px 0;
+}
+.schedule-wrapper{
+    display:flex;    
+    flex-wrap: wrap;
+    background: #689891;
+    box-shadow: #4a6e69 2px 5px;
+    border-radius: 36px;
+    margin: 20px 0;
+    border: none;
+    font-family: "Inter", sans-serif;
+    font-weight: Bold;
+    align-content: center;
+    justify-content: center;
+    font-size: 30px;
+    height: 100px;
+    width: 500px;
+}
+.schedule-button{
+    display: inline;
+    text-decoration: none;
+    color: white;
+    align-items: center;
+}
 .box{
     background: var(--primary-color);
     box-shadow: 5px 3px var(--secondary-color);
