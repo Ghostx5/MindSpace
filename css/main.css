@@ -24,7 +24,7 @@ body {
 .nav-wrapper{
     width: fit-content;
 }
-.login-wrapper{
+.login-btn-wrapper{
     display:flex;
     flex-wrap: wrap;
     background: #689891;
@@ -39,7 +39,7 @@ body {
     height: 60px;
     width: 120px;
 }
-.login-button{
+.login-direct{
     display: inline;
     text-decoration: none;
     color: white;
@@ -120,6 +120,202 @@ body {
 p{
     color: white;
     font-family: "Inter", sans-serif;
+}
+.hero{
+    margin: 100px 250px 50px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.cname{
+    font-family: "Montserrat", sans-serif;
+    color:#689891;
+    font-size: 150px;
+    margin: 20px 0;
+}
+
+#description1{
+    font-family: "Montserrat", sans-serif;
+    color:#d1cfc6;
+    font-size: 50px;
+    margin: 20px 0;
+}
+.schedule-wrapper{
+    display:flex;    
+    flex-wrap: wrap;
+    background: #689891;
+    box-shadow: #4a6e69 2px 5px;
+    border-radius: 36px;
+    margin: 20px 0;
+    border: none;
+    font-family: "Inter", sans-serif;
+    font-weight: Bold;
+    align-content: center;
+    justify-content: center;
+    font-size: 30px;
+    height: 100px;
+    width: 500px;
+}
+.schedule-button{
+    display: inline;
+    text-decoration: none;
+    color: white;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+#login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.login-wrapper{
+    width: fit-content;
+    height: fit-content;
+    padding: 30px 50px 50px 50px;
+    background-color: #292929;
+    border-radius: 36px;
+    box-shadow: black 5px 4px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  /* ← STACKS everything vertically */
+}
+.backbutton-wrapper{
+    display:flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    color: white;}
+.back-btn{
+    background: none;
+    border: none;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-weight:bolder;
+    font-size: 20px;
+    align-items: center;
+    display:inline-flex;
+    gap: 5px;
+}
+.login-arrow{
+    color:green;
+    background-color: transparent;
+    border: none;
+}
+
+#wlcmsg{
+    color:white;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 60px;
+    margin: 0;
+    color:white;
+}
+.info{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 10px 0;
+}
+.info p{
+    font-family: "Montserrat", sans-serif;
+    color:white;
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0;
+}
+.info a{
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+    color:white;
+}
+.info a:hover{
+    color: #689891;
+}
+
+.login-logo{
+    width: 160px;        /* size of your black square */
+    height: 160px;
+    background:#202020;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;    /* optional, remove for a perfect square */
+    margin: 0 0;
+}
+#login-logo{
+    width: 80%; 
+}
+.textbox{
+    color: white;
+    background-color:#1a191b;
+    border: 0.5px solid white;
+    font-size: 12px;
+    margin: 10px 0;
+    width:360px;
+    border-radius: 20px;
+    padding: 20px;
+}
+.text-fields{
+}
+.login-button{
+    width: 100%;
+}
+#login-btn{
+    margin: 10px 0 20px 0;
+    border: none;
+    background-color:#689891;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    font-weight: Bold;
+    font-size: 20px;
+    padding: 15px 20px;
+    width: 400px;
+    border-radius: 20px;
+}
+.login-options{
+    display:flex;
+    width: 60px;     /* container stays stable */
+    height: 60px;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0;
+}
+.login-option-img {
+    background-color: #1a191b;
+    
+    padding: 20px;
+    display:flex;  /* perfect size */
+    height: fit-content;
+    border: 0.5px solid white;
+    cursor: pointer;
+    transition: transform .2s;
+    width: 80px;     /* ← consistent icon size */
+    height: 30px;  
+    object-fit: contain;
+    border-radius:20px;
+}
+
+.login-option-img:hover {
+    transform: scale(1.1);
 }
 .hero{
     margin: 100px 250px 50px;
