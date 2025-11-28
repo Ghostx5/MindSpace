@@ -576,3 +576,116 @@ p{
   animation-timeline: view();     /* uses scroll position */
   animation-range: entry 0% exit 100%;
 }
+
+
+.carousel{
+    margin:20px auto;
+    width: 90%;
+    display: flex;
+    overflow-x: auto;
+}
+.carousel::-webkit-scrollbar{
+    display: none;
+}
+.group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    animation: spin-right 20s infinite linear;
+    padding-right: 1em;
+    padding-bottom: 1em;
+}
+.group2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    animation: spin-left 20s infinite linear;
+    padding-right: 1em; 
+    padding-bottom: 1em;
+}
+.card{
+    background: #689891;
+    box-shadow: #4a6e69 2px 5px;
+    flex: 0 0 5em;
+    height: 5em;
+    padding: 1em;
+    font-size: 3rem;
+    border-radius: 1em;  
+    text-align: left;
+    align-content: center;
+    color: white;
+    display: flex;
+    justify-content: space-between; 
+    flex-direction: column;
+}
+.hero{
+    margin-top: 80px;
+}
+@keyframes spin-right{
+    from {translate: 0;}
+    to {translate: -100%;}
+}
+@keyframes spin-left{
+    from {translate: -100%;}
+    to {translate: 0;}
+}
+
+.card p{
+    font-size: 0.3em;  
+    margin: 0;
+    text-align: left;
+    color: white;
+    text-overflow: ellipsis; 
+    flex: 1; 
+}
+.card h1{
+    font-size: 0.2em;
+    text-align: left;
+    margin: 0;
+}
+#quote{
+    font-size: 2em;         
+    line-height: 1;
+    font-family: "Montserrat", sans-serif;
+}
+
+.card > span {
+    display: flex;          
+    align-items: center;
+    margin: 0.2em 0.2em 0.2em 0;
+    font-family: "Inter", sans-serif;
+    gap: 0.2em;
+    text-align: left;
+    justify-content: left;
+}
+.card > span img.profile-testimonial {
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 50%; 
+    flex-shrink: 0;
+}
+.card > span span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card > span span h1 {
+    font-size: 0.3em;
+    margin: 0;
+}
+
+.card > span span p {
+    font-size: 0.2em;
+    margin: 0;
+    color: #ccc; 
+}
+.profile-testimonial{
+    max-width: 4em;
+    height: auto;
+}
+#kmini{
+    width: fit-content;
+}
