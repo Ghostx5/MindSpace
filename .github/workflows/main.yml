@@ -24,7 +24,7 @@ jobs:
         script: |
           cd /var/www/mindspace.com/html
           git init
-          git remote add origin https://github.com/<your-username>/<your-repo>.git || true
+          git remote add origin https://github.com/Ghostx5/MindSpace.git || true
           git fetch origin main
           git reset --hard origin/main
           # Optional: restart Apache if needed
