@@ -21,7 +21,7 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         port: 22
         script: |
-          cd /var/www/html
+          cd /var/www/mindspace.com/html
           git init
           git remote add origin https://github.com/<your-username>/<your-repo>.git || true
           git fetch origin main
