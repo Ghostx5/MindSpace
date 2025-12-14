@@ -25,7 +25,7 @@ jobs:
           cd /var/www/mindspace.com/html
           git init
           git remote add origin https://github.com/Ghostx5/MindSpace.git || true
-          git fetch origin main
-          git reset --hard origin/main
+          git fetch origin Main
+          git reset --hard origin/Main
           # Optional: restart Apache if needed
           # sudo systemctl restart apache2
