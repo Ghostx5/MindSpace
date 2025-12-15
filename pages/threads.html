@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Threads | MindSpace</title>
+</head>
+<body>
+  <h1>Threads</h1>
+
+  <form id="newThread">
+    <input id="title" placeholder="Thread title" required>
+    <textarea id="content" placeholder="First post" required></textarea>
+    <button>Create Thread</button>
+  </form>
+
+  <ul id="threads"></ul>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("category");
+
+    fetch(`/api/threads?category=${category}`)
+      .then(res => res.json())
+      .then(threads => {
+        const list = document.getElementById("threads");
+        threads.forEach(t => {
+          const li = document.createElement("li");
+          li.innerHTML = `<a href="thread.html?id=${t.id}">
+            ${t.title}</a> — by ${t.username}`;
+          list.appendChild(li);
+        });
+      });
+
+    document.getElementById("newThread").onsubmit = async e => {
+      e.preventDefault();
+
+      await fetch("/api/threads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: title.value,
+          content: content.value,
+          categoryId: category
+        })
+      });
+
+      location.reload();
+    };
+  </script>
+</body>
+</html>

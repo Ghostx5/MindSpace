@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Thread | MindSpace</title>
+</head>
+<body>
+  <h1 id="title"></h1>
+  <p id="author"></p>
+
+  <ul id="replies"></ul>
+
+  <form id="replyForm">
+    <textarea id="reply" placeholder="Write a reply" required></textarea>
+    <button>Reply</button>
+  </form>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    fetch(`/api/threads/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        title.textContent = data.thread.title;
+        author.textContent = "By " + data.thread.username;
+
+        data.replies.forEach(r => {
+          const li = document.createElement("li");
+          li.innerHTML = `<strong>${r.username}</strong>: ${r.content}`;
+          replies.appendChild(li);
+        });
+      });
+
+    replyForm.onsubmit = async e => {
+      e.preventDefault();
+
+      await fetch("/api/threads/reply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          threadId: id,
+          content: reply.value
+        })
+      });
+
+      location.reload();
+    };
+  </script>
+</body>
+</html>
