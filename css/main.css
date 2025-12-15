@@ -120,9 +120,26 @@ p{
 
 .carousel{
     margin:20px auto;
-    width: 90%;
+    width: 100%;
     display: flex;
     overflow-x: auto;
+    -webkit-mask-image: linear-gradient(to right, 
+        transparent 0%, 
+        rgba(0,0,0,0.8) 15%, 
+        black 50%, 
+        rgba(0,0,0,0.8) 85%, 
+        transparent 100%);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: cover;
+
+    mask-image: linear-gradient(to right, 
+        transparent 0%, 
+        rgba(0,0,0,0.8) 15%, 
+        black 50%, 
+        rgba(0,0,0,0.8) 85%, 
+        transparent 100%);
+    mask-repeat: no-repeat;
+    mask-size: cover;
 }
 .carousel::-webkit-scrollbar{
     display: none;
