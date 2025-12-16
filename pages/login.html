@@ -2,99 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MindSpace | Login</title>
+    <title>Login | MindSpace</title>
     <link rel="icon" href="../assets/mindspace-logo.PNG" type="image/png">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/theme.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <style>
-        /* Inline styles for message and minor tweaks */
-        #msg {
-            margin-top: 10px;
-            font-size: 14px;
-            text-align: center;
-        }
-        #login-btn {
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body id="login">
-    <div class="login-wrapper">
-        <div class="backbutton-wrapper">
-            <button onclick="history.back()" class="back-btn">
-                <img class="login-arrow" src="../assets/back-btn.svg">Back
-            </button>
+<div class="login-wrapper">
+    <div class="backbutton-wrapper">
+        <button onclick="history.back()" class="back-btn">
+            <img class="login-arrow" src="../assets/back-btn.svg">Back
+        </button>
+    </div>
+    <div class="login-logo">
+        <img id="login-logo" src="../assets/mindspace-logo.PNG">
+    </div>
+    <div class="info">
+        <h1 id="wlcmsg">Welcome Back!</h1>
+        <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+    </div>
+    <div class="text-fields">
+        <div id="email">
+            <input class="textbox" type="text" name="email" id="email" placeholder="ramesh.kamineni@gmail.com" maxlength="50">
         </div>
-
-        <div class="login-logo">
-            <img id="login-logo" src="../assets/mindspace-logo.PNG">
-        </div>
-
-        <div class="info">
-            <h1 id="wlcmsg">Welcome Back!</h1>
-            <p>
-                Don't have an account yet? 
-                <a href="../pages/signup.html">Sign Up</a>
-            </p>
-        </div>
-
-        <div class="text-fields">
-            <div class="input-wrapper">
-                <input class="textbox" type="email" id="email" placeholder="Email" maxlength="50" required>
-            </div>
-            <div class="input-wrapper">
-                <input class="textbox" type="password" id="password" placeholder="Password" maxlength="50" required>
-            </div>
-        </div>
-
-        <div class="login-direct">
-            <button id="login-btn" onclick="login()">Login</button>
-        </div>
-
-        <div id="msg"></div>
-
-        <div class="login-options">
-            <a href="https://google.com"><img class="login-option-img" src="../assets/google.svg"></a>
-            <a href="https://apple.com"><img class="login-option-img" src="../assets/apple.svg"></a>
-            <a href="https://twitter.com"><img class="login-option-img" src="../assets/twitter.svg"></a>
+        <div id="password">
+            <input class="textbox" type="password" name="password" id="password" placeholder="Password" maxlength="50">
         </div>
     </div>
+    <div class="login-direct">
+        <button id="login-btn">Login</button>
+    </div>
+    <div id="msg" class="note"></div>
+</div>
 
 <script>
-async function login() {
+document.getElementById("login-btn").onclick = async () => {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
     const msg = document.getElementById("msg");
 
-    if (!email || !password) {
-        msg.innerHTML = "<span style='color: red;'>Please enter both email and password.</span>";
-        return;
-    }
-
     try {
-        const response = await fetch("/api/login", {
+        const res = await fetch("/api/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password })
         });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            msg.innerHTML = "<span style='color: green;'>Login successful!</span>";
+        const data = await res.json();
+        if (res.ok) {
             localStorage.setItem("token", data.token);
-            setTimeout(() => (window.location.href = "/"), 1200);
+            localStorage.setItem("username", data.username);
+            window.location.href = "forums.html";
         } else {
-            msg.innerHTML = "<span style='color: red;'>" + data.message + "</span>";
+            msg.textContent = data.message;
+            msg.style.color = "red";
         }
-    } catch (error) {
-        msg.innerHTML = "<span style='color: red;'>An error occurred. Please try again.</span>";
-        console.error(error);
+    } catch (err) {
+        msg.textContent = "Login failed. Try again.";
+        msg.style.color = "red";
     }
-}
+};
 </script>
 </body>
 </html>

@@ -16,6 +16,7 @@
   </form>
 
   <script>
+    const token = localStorage.getItem("token");
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
 
@@ -34,16 +35,17 @@
 
     replyForm.onsubmit = async e => {
       e.preventDefault();
-
       await fetch("/api/threads/reply", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
         body: JSON.stringify({
           threadId: id,
           content: reply.value
         })
       });
-
       location.reload();
     };
   </script>

@@ -2,100 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MindSpace | Sign Up</title>
+    <title>Sign Up | MindSpace</title>
     <link rel="icon" href="../assets/mindspace-logo.PNG" type="image/png">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/theme.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body id="login">
-    <div class="login-wrapper">
-
-        <!-- Back button -->
-        <div class="backbutton-wrapper">
-            <button onclick="history.back()" class="back-btn">
-                <img class="login-arrow" src="../assets/back-btn.svg" alt="Back">Back
-            </button>
-        </div>
-
-        <!-- Logo -->
-        <div class="login-logo">
-            <img id="login-logo" src="../assets/mindspace-logo.PNG" alt="MindSpace Logo">
-        </div>
-
-        <!-- Info -->
-        <div class="info">
-            <h1 id="wlcmsg">Welcome In!</h1>
-            <p>
-                Already have an account? 
-                <a href="../pages/login.html">Login</a>
-            </p>
-        </div>
-
-        <!-- Input fields -->
-        <div class="text-fields">
-            <div>
-                <input class="textbox" type="text" id="name" placeholder="Goonesh" maxlength="50">
-            </div>
-            <div>
-                <input class="textbox" type="email" id="email" placeholder="ramesh.kamineni@gmail.com" maxlength="50">
-            </div>
-            <div>
-                <input class="textbox" type="password" id="password" placeholder="Password" maxlength="50">
-            </div>
-        </div>
-
-        <!-- Sign Up button -->
-        <div class="login-direct">
-            <button id="login-btn" onclick="signup()">Sign Up</button>
-        </div>
-
-        <!-- Message -->
-        <div id="msg" class="note"></div>
-
-        <!-- Social login -->
-        <div class="login-options">
-            <a href="https://google.com"><img class="login-option-img" src="../assets/google.svg" alt="Google Login"></a>
-            <a href="https://apple.com"><img class="login-option-img" src="../assets/apple.svg" alt="Apple Login"></a>
-            <a href="https://twitter.com"><img class="login-option-img" src="../assets/twitter.svg" alt="Twitter Login"></a>
-        </div>
-
+<div class="login-wrapper">
+    <div class="backbutton-wrapper">
+        <button onclick="history.back()" class="back-btn">
+            <img class="login-arrow" src="../assets/back-btn.svg">Back
+        </button>
     </div>
+    <div class="login-logo">
+        <img id="login-logo" src="../assets/mindspace-logo.PNG">
+    </div>
+    <div class="info">
+        <h1 id="wlcmsg">Welcome In!</h1>
+        <p>Already have an account? <a href="login.html">Login</a></p>
+    </div>
+    <div class="text-fields">
+        <div id="name">
+            <input class="textbox" type="text" name="name" id="name" placeholder="Goonesh" maxlength="50">
+        </div>
+        <div id="email">
+            <input class="textbox" type="text" name="email" id="email" placeholder="ramesh.kamineni@gmail.com" maxlength="50">
+        </div>
+        <div id="password">
+            <input class="textbox" type="password" name="password" id="password" placeholder="Password" maxlength="50">
+        </div>
+    </div>
+    <div class="login-direct">
+        <button id="signup-btn">Sign Up</button>
+    </div>
+    <div id="msg" class="note"></div>
+</div>
 
 <script>
-async function signup() {
-    const name = document.getElementById("name").value.trim();
+document.getElementById("signup-btn").onclick = async () => {
+    const username = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
     const msg = document.getElementById("msg");
 
-    if (!name || !email || !password) {
-        msg.innerHTML = "<span style='color: red;'>Please fill in all fields.</span>";
-        return;
-    }
-
     try {
-        const response = await fetch("/api/signup", {
+        const res = await fetch("/api/signup", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, email, password })
+            body: JSON.stringify({ username, email, password })
         });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            msg.innerHTML = "<span style='color: green;'>Account created! Redirecting...</span>";
-            setTimeout(() => (window.location.href = "../pages/login.html"), 1200);
+        const data = await res.json();
+        if (res.ok) {
+            msg.textContent = "Account created! Redirecting to login...";
+            msg.style.color = "green";
+            setTimeout(() => { window.location.href = "login.html"; }, 1200);
         } else {
-            msg.innerHTML = "<span style='color: red;'>" + data.message + "</span>";
+            msg.textContent = data.message;
+            msg.style.color = "red";
         }
-    } catch (error) {
-        msg.innerHTML = "<span style='color: red;'>An error occurred. Please try again.</span>";
-        console.error(error);
+    } catch (err) {
+        msg.textContent = "Signup failed. Try again.";
+        msg.style.color = "red";
     }
-}
+};
 </script>
 </body>
 </html>

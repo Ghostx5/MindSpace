@@ -16,6 +16,7 @@
   <ul id="threads"></ul>
 
   <script>
+    const token = localStorage.getItem("token");
     const params = new URLSearchParams(window.location.search);
     const category = params.get("category");
 
@@ -25,25 +26,25 @@
         const list = document.getElementById("threads");
         threads.forEach(t => {
           const li = document.createElement("li");
-          li.innerHTML = `<a href="thread.html?id=${t.id}">
-            ${t.title}</a> — by ${t.username}`;
+          li.innerHTML = `<a href="thread.html?id=${t.id}">${t.title}</a> — by ${t.username}`;
           list.appendChild(li);
         });
       });
 
     document.getElementById("newThread").onsubmit = async e => {
       e.preventDefault();
-
       await fetch("/api/threads", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
         body: JSON.stringify({
           title: title.value,
           content: content.value,
           categoryId: category
         })
       });
-
       location.reload();
     };
   </script>
