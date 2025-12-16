@@ -53,52 +53,50 @@
                 <div class="forums-entry-userinfo">
                     <img class="forums-pfp" src="../assets/kmini.svg" alt="User PFP">
                     <div class="forums-user-details">
-                        <h2 class="forums-username">Shashank Kamineni</h2>
-                        <p class="forums-post-time">2 hours ago</p>
+                        <h2 class="forums-username">Username</h2>
                     </div>
                 </div>
-                <div class="forums-textbox">
-                    <textarea type="text" name="forums-textbox" id="forums-textbox" placeholder="ramesh.kamineni@gmail.com" maxlength="100000000"></textarea>
+                <div class="forums-textbox-container">
+                    <textarea class="forums-textbox" placeholder="Share your thoughts..."></textarea>
                 </div>
             </div>
             <hr class="post-divider">
             <div class="forums-entry-coloumn forum-entry-actions">
                 <div class="forums-image-upload">
-                    <button id="forums-entry-submit">Image</button>
+                    <button class="action-btn" >
+                        <img id="forums-entry-img-upload" class="action-btn-img" src="../assets/img-upload.svg">
+                        <span id="forums-action-btn-image" class="descriptor">Image</span>
+                    </button>
                 </div>
                 <div class="forums-postbutton">
-                    <button id="forums-entry-submit">Submit</button>
+                    <button class="action-btn" id="submit-forum-post">
+                        <img class="action-btn-img" id="submit-forum-post-arrow" src="../assets/arrow.svg">
+                    </button>
                 </div>
             </div>
         </div>
         
-    
-    <div class="forums-post">
-        <div class="forums-post-userinfo">
-            <img class="forums-post-pfp" src="path/to/profile.jpg" alt="Profile Picture">
-            <div class="forums-post-details">
-                <h1 class="forums-username">Username</h1>
-                <p class="forums-time">Posted 2 hours ago</p>
+    <div class="forums-post-wrapper">
+        <div class="forums-comments">
+            <div class="comment-input hidden ">
+                <div class="forums-post-userinfo">
+                    <img class="forums-post-pfp" src="path/to/profile.jpg" alt="Profile Picture">
+                    <div class="forums-post-details">
+                        <h1 class="forums-username">Username</h1>
+                        <p class="forums-time">Posted x hours ago</p>
+                    </div>
+                </div>
+                <div class="forums-post-content">
+                    <textarea class="forums-textbox" placeholder="Share your thoughts..."></textarea>
+                </div>                
+                <button class="submit-comment action-btn" type="button">
+                    <img class="action-btn-img" id="submit-comment-post-arrow" src="../assets/arrow.svg">
+                </button>
+            </div>
             </div>
         </div>
-        <div class="forums-post-content">
-            <p class="forums-post-text">
-                This is where the post content will go.
-            </p>
+
         </div>
-        <hr class="post-divider">
-        <div class="forums-post-actions">
-                <button class="action-btn like">
-                    👍 <span class="count">12</span>
-                </button>
-                <button class="action-btn comment">
-                    💬 <span class="count">4</span>
-                </button>
-                <button class="action-btn share">
-                    🔗 <span class="count">2</span>
-                </button>
-        </div>
-    </div>
     </div>
 
 </body>

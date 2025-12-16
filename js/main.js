@@ -53,4 +53,12 @@ downArrow.addEventListener('click', () => {
 dots.forEach((dot, i) => {
     dot.addEventListener('click', () => showBox(i));
 });
+document.querySelectorAll('.comment-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const post = btn.closest('.forums-post-wrapper');
+    const input = post.querySelector('.comment-input');
+    input.classList.toggle('hidden');
+  });
+});
+
 
