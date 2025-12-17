@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blogs | MindSpace</title>
+    <link rel="icon" href="../assets/mindspace-logo.PNG" type="image/png">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body>
+    <h1>Blogs</h1>
+
+    <form id="newBlog">
+        <input id="title" placeholder="Blog title" required>
+        <textarea id="content" placeholder="Write your blog..." required></textarea>
+        <button>Create Blog</button>
+    </form>
+
+    <ul id="blogs"></ul>
+
+    <script>
+        const token = localStorage.getItem("token");
+
+        // Fetch all blogs
+        async function fetchBlogs() {
+            const res = await fetch("/api/blogs");
+            const blogs = await res.json();
+
+            const list = document.getElementById("blogs");
+            list.innerHTML = "";
+            blogs.forEach(b => {
+                const li = document.createElement("li");
+                li.innerHTML = `<a href="blog.html?id=${b.id}"><strong>${b.title}</strong></a> — by ${b.author}<br>${b.content.substring(0, 150)}...<br><em>${new Date(b.created_at).toLocaleString()}</em>`;
+                list.appendChild(li);
+            });
+        }
+
+        fetchBlogs();
+
+        // Create new blog
+        document.getElementById("newBlog").onsubmit = async e => {
+            e.preventDefault();
+            if (!token) {
+                alert("You must be logged in to post a blog.");
+                return;
+            }
+
+            const title = document.getElementById("title").value.trim();
+            const content = document.getElementById("content").value.trim();
+
+            if (!title || !content) return;
+
+            const res = await fetch("/api/blogs", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + token
+                },
+                body: JSON.stringify({ title, content })
+            });
+
+            if (res.ok) {
+                document.getElementById("title").value = "";
+                document.getElementById("content").value = "";
+                fetchBlogs();
+            } else {
+                const data = await res.json();
+                alert(data.message || "Failed to create blog.");
+            }
+        };
+    </script>
+</body>
+</html>
