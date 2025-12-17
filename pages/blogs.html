@@ -1,29 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Blogs | MindSpace</title>
+    <meta charset="UTF-8">
+    <title>Blogs | MindSpace</title>
+    <link rel="icon" href="../assets/mindspace-logo.PNG" type="image/png">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Blogs</h1>
-  <ul id="blogs">
-    <!-- List of blog links will go here -->
-  </ul>
+<header>
+    <div class="header-wrapper">
+        <div class="logo-wrapper">
+            <a class="logo" href="../index.html"><img src="../assets/logo-withtname.svg"></a>
+        </div>
+        <div class="nav-wrapper">
+            <nav class="navbar">
+                <ul>
+                    <li><a href="../pages/mental-health-info.html">Mental Health Info</a></li>
+                    <li><a href="../pages/blog-posts.html">Blog Posts</a></li>
+                    <li><a href="../pages/forums.html">Forums</a></li>
+                    <li><a href="../pages/testimonials.html">Testimonials</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="login-btn-wrapper">
+            <a href="../pages/login.html" class="login-direct">Login</a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="overlay-menu">
+            <ul>
+                <li><a href="../pages/mental-health-info.html">Mental Health Info</a></li>
+                <li><a href="../pages/blog-posts.html">Blog Posts</a></li>
+                <li><a href="../pages/forums.html">Forums</a></li>
+                <li><a href="../pages/testimonials.html">Testimonials</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
 
-  <script>
-    // Example hardcoded blogs; replace with actual IDs/titles
+<div class="hero-forums">
+    <div class="forums-post-wrapper">
+        <h1>Blogs</h1>
+        <ul id="blogs" class="forums-comments">
+            <!-- Blog links will be appended here -->
+        </ul>
+    </div>
+</div>
+
+<script>
+    // Example hardcoded blogs; replace with actual IDs/titles or fetch from API
     const blogs = [
-      { id: 1, title: "My First Blog Post" },
-      { id: 2, title: "Another Blog Post" },
-      { id: 3, title: "Yet Another Post" }
+        { id: 1, title: "My First Blog Post" },
+        { id: 2, title: "Another Blog Post" },
+        { id: 3, title: "Yet Another Post" }
     ];
 
     const list = document.getElementById("blogs");
     blogs.forEach(blog => {
-      const li = document.createElement("li");
-      li.innerHTML = `<a href="blog.html?id=${blog.id}">${blog.title}</a>`;
-      list.appendChild(li);
+        const li = document.createElement("li");
+        li.innerHTML = `<a href="blog.html?id=${blog.id}">${blog.title}</a>`;
+        list.appendChild(li);
     });
-  </script>
+</script>
 </body>
 </html>
