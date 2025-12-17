@@ -1,40 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Blog Post | MindSpace</title>
+    <meta charset="UTF-8">
+    <title>Blog Post | MindSpace</title>
+    <link rel="icon" href="../assets/mindspace-logo.PNG" type="image/png">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1 id="title"></h1>
-  <p id="author"></p>
-  <div id="content"></div>
+<header>
+    <div class="header-wrapper">
+        <div class="logo-wrapper">
+            <a class="logo" href="../index.html"><img src="../assets/logo-withtname.svg"></a>
+        </div>
+        <div class="nav-wrapper">
+            <nav class="navbar">
+                <ul>
+                    <li><a href="../pages/mental-health-info.html">Mental Health Info</a></li>
+                    <li><a href="../pages/blog-posts.html">Blog Posts</a></li>
+                    <li><a href="../pages/forums.html">Forums</a></li>
+                    <li><a href="../pages/testimonials.html">Testimonials</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="login-btn-wrapper">
+            <a href="../pages/login.html" class="login-direct">Login</a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="overlay-menu">
+            <ul>
+                <li><a href="../pages/mental-health-info.html">Mental Health Info</a></li>
+                <li><a href="../pages/blog-posts.html">Blog Posts</a></li>
+                <li><a href="../pages/forums.html">Forums</a></li>
+                <li><a href="../pages/testimonials.html">Testimonials</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
 
-  <script>
+<div class="hero-forums">
+    <div class="forums-post-wrapper">
+        <div id="blog-container">
+            <div id="blog-header" class="forums-post-userinfo">
+                <img class="forums-post-pfp" src="../assets/kmini.svg" alt="Author PFP">
+                <div class="forums-post-details">
+                    <h2 id="blog-author" class="forums-username"></h2>
+                    <p id="blog-date" class="forums-time"></p>
+                </div>
+            </div>
+            <div id="blog-content" class="forums-post-content">
+                <!-- Blog title and content will be injected here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
-    const titleEl = document.getElementById("title");
-    const authorEl = document.getElementById("author");
-    const contentEl = document.getElementById("content");
+    const authorEl = document.getElementById("blog-author");
+    const dateEl = document.getElementById("blog-date");
+    const contentEl = document.getElementById("blog-content");
 
     if (!id) {
-      titleEl.textContent = "Blog not found";
-    } else {
-      fetch(`/api/blogs/${id}`)
-        .then(res => {
-          if (!res.ok) throw new Error("Blog not found");
-          return res.json();
-        })
-        .then(data => {
-          titleEl.textContent = data.title;
-          authorEl.textContent = "By " + data.username;
-          contentEl.innerHTML = data.content; // assumes backend returns HTML-safe content
-        })
-        .catch(err => {
-          titleEl.textContent = "Blog not found";
-          authorEl.textContent = "";
-          contentEl.textContent = "";
-        });
+        contentEl.innerHTML = "<h2>Blog not found</h2>";
+        return;
     }
-  </script>
+
+    try {
+        const res = await fetch(`/api/blogs/${id}`);
+        if (!res.ok) throw new Error("Blog not found");
+        const blog = await res.json();
+
+        authorEl.textContent = blog.username;
+        dateEl.textContent = "Posted on " + new Date(blog.created_at).toLocaleDateString();
+        contentEl.innerHTML = `
+            <h1>${blog.title}</h1>
+            <div>${blog.content}</div>
+        `;
+    } catch (err) {
+        contentEl.innerHTML = "<h2>Blog not found</h2>";
+        console.error(err);
+    }
+});
+</script>
 </body>
 </html>
