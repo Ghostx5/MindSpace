@@ -1,19 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Thread | MindSpace</title>
+  <link rel="icon" href="../assets/mindspace-logo.PNG" type="image/png">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/theme.css">
 </head>
-<body>
-  <h1 id="title"></h1>
-  <p id="author"></p>
+<body id="thread">
+  <header>
+    <div class="header-wrapper">
+      <div class="logo-wrapper">
+        <a class="logo" href="../index.html"><img src="../assets/logo-withtname.svg"></a>
+      </div>
+    </div>
+  </header>
 
-  <ul id="replies"></ul>
+  <div class="hero-forums">
+    <div class="forums-post-wrapper">
+      <h1 id="title"></h1>
+      <p id="author"></p>
 
-  <form id="replyForm">
-    <textarea id="reply" placeholder="Write a reply" required></textarea>
-    <button>Reply</button>
-  </form>
+      <ul id="replies"></ul>
+
+      <form id="replyForm">
+        <textarea id="reply" placeholder="Write a reply" required></textarea>
+        <button>Reply</button>
+      </form>
+    </div>
+  </div>
 
   <script>
     const token = localStorage.getItem("token");
@@ -38,8 +53,8 @@
       await fetch("/api/threads/reply", {
         method: "POST",
         headers: { 
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
           threadId: id,
