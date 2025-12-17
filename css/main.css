@@ -689,3 +689,41 @@ p{
 #kmini{
     width: fit-content;
 }
+.world-map{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: max-content;
+    height: max-content;
+    min-height: 30em;
+    background-color: #1a191b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+svg{
+    width: 100vw;
+    height: 100vw;
+}
+path{
+    fill:#292929 !important;
+    stroke:#ffffff;
+    transition: 100ms;
+}
+path:hover{
+    fill:#4a6e69 !important;
+}
+.side-panel{
+    position: fixed;
+    background-color: #292929;
+    padding: 2em;
+    top: 0;
+    left: -30em;
+    width: 100%;
+    max-width: 30em;
+    height: 100vh;
+    transition: 
+    600ms cubic-bezier(0.77, 0, 0.18, 1);
+    overflow: scroll;
+    z-index: 1;
+}
