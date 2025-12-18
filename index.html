@@ -2,6 +2,138 @@
 <!-- V: 1.0.0 -->
 <html lang="en">
 <head>
+    <!-- Add this RIGHT AFTER <meta charset> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<!-- CRITICAL: Add this inline style immediately after -->
+<style>
+    /* Force immediate text visibility */
+    body {
+        opacity: 1 !important;
+        visibility: visible !important;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    /* Fallback font system */
+    body, p, h1, h2, h3, h4, h5, h6, span, div, a {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+                     'Helvetica Neue', Arial, sans-serif !important;
+    }
+    
+    /* When fonts load, transition to them */
+    .fonts-loaded body,
+    .fonts-loaded p,
+    .fonts-loaded h1,
+    .fonts-loaded h2,
+    .fonts-loaded h3,
+    .fonts-loaded h4,
+    .fonts-loaded h5,
+    .fonts-loaded h6,
+    .fonts-loaded span,
+    .fonts-loaded div,
+    .fonts-loaded a {
+        font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+                     Roboto, sans-serif !important;
+    }
+    
+    .fonts-loaded .navbar,
+    .fonts-loaded .login-btn-wrapper,
+    .fonts-loaded .schedule-button,
+    .fonts-loaded .info p,
+    .fonts-loaded .info a {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+                     Roboto, sans-serif !important;
+    }
+</style>
+
+<!-- Add this script to force font loading -->
+<script>
+    // Force font load and text visibility
+    document.documentElement.className = 'fonts-loading';
+    
+    // Create font loader
+    var fontLoader = new Promise(function(resolve) {
+        // Check if fonts are already loaded
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(function() {
+                resolve();
+            });
+        } else {
+            // Fallback for older Safari
+            setTimeout(resolve, 100);
+        }
+    });
+    
+    // Show text immediately, then apply fonts
+    document.addEventListener('DOMContentLoaded', function() {
+        // Force text to be visible NOW
+        document.body.style.opacity = '1';
+        document.body.style.visibility = 'visible';
+        
+        // After fonts load (or timeout), add class
+        fontLoader.then(function() {
+            document.documentElement.className = 'fonts-loaded';
+        }).catch(function() {
+            // If font loading fails, still show text
+            document.documentElement.className = 'fonts-failed';
+            document.body.style.opacity = '1';
+            document.body.style.visibility = 'visible';
+        });
+        
+        // Safety timeout - show text no matter what
+        setTimeout(function() {
+            document.body.style.opacity = '1';
+            document.body.style.visibility = 'visible';
+            if (!document.documentElement.classList.contains('fonts-loaded')) {
+                document.documentElement.className = 'fonts-failed';
+            }
+        }, 300);
+    });
+    
+    // Also trigger on window load
+    window.addEventListener('load', function() {
+        document.body.style.opacity = '1';
+        document.body.style.visibility = 'visible';
+    });
+</script>
+    <script>
+    // Detect Safari
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent) || 
+                   /^((?!chrome|android).)*safari/i.test(navigator.vendor);
+    
+    if (isSafari) {
+        // Force basic rendering
+        document.documentElement.style.setProperty('--safari-fix', '1');
+        
+        // Add Safari-specific CSS
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'css/safari-fix.css';
+        document.head.appendChild(link);
+        
+        // Remove problematic CSS properties
+        document.addEventListener('DOMContentLoaded', function() {
+            var styles = document.querySelectorAll('style, link[rel="stylesheet"]');
+            styles.forEach(function(style) {
+                if (style.sheet) {
+                    try {
+                        var rules = style.sheet.cssRules || style.sheet.rules;
+                        for (var i = 0; i < rules.length; i++) {
+                            if (rules[i].cssText.includes('animation-timeline') || 
+                                rules[i].cssText.includes('view()') ||
+                                rules[i].cssText.includes('animation-range')) {
+                                style.sheet.deleteRule(i);
+                                i--;
+                            }
+                        }
+                    } catch(e) {}
+                }
+            });
+        });
+    }
+</script>
     <meta charset="UTF-8">
     <title id>MindSpace</title>
     <link rel="icon" href="assets/mindspace-logo.PNG" type="image/png">
@@ -10,6 +142,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<script src="js/font-loader.js" defer></script>
 </head>
 <body>
     <header>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Safari Test - NO STYLES</title>
+    <!-- NO external CSS -->
+</head>
+<body style="background: black; color: white; padding: 20px;">
+    <h1>🔥 Safari Basic Test</h1>
+    <p>If you see this, HTML is working.</p>
+    
+    <h2>Test 1: Local Image</h2>
+    <img src="assets/mindspace-logo.PNG" width="100" alt="Logo" 
+         onerror="this.style.border='3px solid red'; this.alt='FAILED: ' + this.src;">
+    
+    <h2>Test 2: SVG Logo</h2>
+    <img src="assets/logo-withtname.svg" width="200" alt="SVG Logo"
+         onerror="this.style.border='3px solid red'; this.alt='SVG FAILED'">
+    
+    <h2>Test 3: Font Test</h2>
+    <p style="font-family: Arial, sans-serif;">Arial font</p>
+    <p style="font-family: 'Montserrat', Arial, sans-serif;">Montserrat font</p>
+    
+    <script>
+        // Test JavaScript
+        console.log('Safari test loaded');
+        document.write('<p style="color: green;">✅ JavaScript is working</p>');
+        
+        // Check image loading
+        window.onload = function() {
+            var images = document.querySelectorAll('img');
+            images.forEach(function(img) {
+                if (!img.complete || img.naturalWidth === 0) {
+                    console.error('Image failed:', img.src);
+                    img.style.border = '3px solid red';
+                } else {
+                    img.style.border = '3px solid green';
+                }
+            });
+        };
+    </script>
+</body>
+</html>

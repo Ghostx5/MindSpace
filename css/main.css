@@ -1,10 +1,32 @@
-/* Add to main.css at the top */
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+/* SAFARI FONT FIX - MUST BE FIRST */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap&display=swap');
+
+/* Force system fonts initially */
+body, * {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+                 'Helvetica Neue', Arial, sans-serif !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
-/* Add font-display: swap to ensure text shows immediately */
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap&display=swap');
+/* When fonts-loaded class is present, use custom fonts */
+.fonts-loaded body,
+.fonts-loaded * {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+                 Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+.fonts-loaded .navbar *,
+.fonts-loaded .login-btn-wrapper,
+.fonts-loaded .schedule-button,
+.fonts-loaded .info p,
+.fonts-loaded .info a,
+.fonts-loaded .textbox,
+.fonts-loaded .login-btn {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+                 Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+}
+
 .overlay-menu{
     display:none;
 }
@@ -276,8 +298,6 @@ p{
     width:360px;
     border-radius: 20px;
     padding: 20px;
-}
-.text-fields{
 }
 .login-button{
     width: 100%;

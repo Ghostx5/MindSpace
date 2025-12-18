@@ -1,0 +1,39 @@
+/* SAFARI-SPECIFIC FIXES */
+@media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+        /* This targets Safari ONLY */
+        body {
+            opacity: 1 !important;
+            visibility: visible !important;
+            display: block !important;
+        }
+        
+        /* Force all text to show */
+        * {
+            color: white !important;
+            -webkit-text-fill-color: white !important;
+        }
+        
+        /* Force images to render */
+        img {
+            content: attr(src) !important;
+            -webkit-print-color-adjust: exact !important;
+        }
+        
+        /* Fix SVG rendering */
+        img[src$=".svg"] {
+            -webkit-mask-image: none !important;
+            background-color: transparent !important;
+        }
+        
+        /* Nuclear option: remove all transforms/animations */
+        .carousel, .group, .group2, .obj, .disorder-wrapper {
+            animation: none !important;
+            -webkit-animation: none !important;
+            transform: none !important;
+            -webkit-transform: none !important;
+            opacity: 1 !important;
+            display: block !important;
+        }
+    }
+}
