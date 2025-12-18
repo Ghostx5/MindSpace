@@ -3,66 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <title>Thread | MindSpace</title>
-  <link rel="icon" href="../assets/mindspace-logo.PNG" type="image/png">
+  <link rel="icon" href="../assets/mindspace-logo.PNG">
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="../css/theme.css">
 </head>
+
 <body id="thread">
-  <header>
-    <div class="header-wrapper">
-      <div class="logo-wrapper">
-        <a class="logo" href="../index.html"><img src="../assets/logo-withtname.svg"></a>
-      </div>
+
+<header>
+  <div class="header-wrapper">
+    <div class="logo-wrapper">
+      <a class="logo" href="../index.html">
+        <img src="../assets/logo-withtname.svg">
+      </a>
     </div>
-  </header>
+  </div>
+</header>
 
-  <div class="hero-forums">
-    <div class="forums-post-wrapper">
-      <h1 id="title"></h1>
-      <p id="author"></p>
+<div class="hero-forums">
 
-      <ul id="replies"></ul>
+  <div class="forums-post-wrapper">
+    <h1 id="title"></h1>
+    <p id="author"></p>
 
-      <form id="replyForm">
-        <textarea id="reply" placeholder="Write a reply" required></textarea>
-        <button>Reply</button>
-      </form>
+    <ul id="replies" class="forums-comments"></ul>
+
+    <!-- REPLY BOX -->
+    <div class="forums-entry">
+      <textarea id="reply" class="forums-textbox" placeholder="Write a reply..."></textarea>
+      <button id="reply-btn" class="action-btn">Reply</button>
     </div>
   </div>
 
-  <script>
-    const token = localStorage.getItem("token");
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
+</div>
 
-    fetch(`/api/threads/${id}`)
-      .then(res => res.json())
-      .then(data => {
-        title.textContent = data.thread.title;
-        author.textContent = "By " + data.thread.username;
+<script>
+var token = localStorage.getItem("token");
+var params = new URLSearchParams(window.location.search);
+var id = params.get("id");
 
-        data.replies.forEach(r => {
-          const li = document.createElement("li");
-          li.innerHTML = `<strong>${r.username}</strong>: ${r.content}`;
-          replies.appendChild(li);
-        });
-      });
+/* LOAD THREAD */
+fetch("/api/threads/" + id)
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    document.getElementById("title").textContent = data.thread.title;
+    document.getElementById("author").textContent = "By " + data.thread.username;
 
-    replyForm.onsubmit = async e => {
-      e.preventDefault();
-      await fetch("/api/threads/reply", {
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          threadId: id,
-          content: reply.value
-        })
-      });
-      location.reload();
-    };
-  </script>
+    var replies = document.getElementById("replies");
+    data.replies.forEach(function(r) {
+      var li = document.createElement("li");
+      li.innerHTML = "<strong>" + r.username + "</strong><p>" + r.content + "</p>";
+      replies.appendChild(li);
+    });
+  });
+
+/* POST REPLY */
+document.getElementById("reply-btn").onclick = function () {
+  if (!reply.value) return;
+
+  fetch("/api/threads/reply", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + token
+    },
+    body: JSON.stringify({
+      threadId: id,
+      content: reply.value
+    })
+  }).then(function() {
+    location.reload();
+  });
+};
+</script>
+
 </body>
 </html>

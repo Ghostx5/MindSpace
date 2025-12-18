@@ -3,62 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <title>Threads | MindSpace</title>
-  <link rel="icon" href="../assets/mindspace-logo.PNG" type="image/png">
+  <link rel="icon" href="../assets/mindspace-logo.PNG">
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="../css/theme.css">
 </head>
+
 <body id="threads">
-  <header>
-    <div class="header-wrapper">
-      <div class="logo-wrapper">
-        <a class="logo" href="../index.html"><img src="../assets/logo-withtname.svg"></a>
-      </div>
+
+<header>
+  <div class="header-wrapper">
+    <div class="logo-wrapper">
+      <a class="logo" href="../index.html">
+        <img src="../assets/logo-withtname.svg">
+      </a>
     </div>
-  </header>
+  </div>
+</header>
 
-  <div class="hero-forums">
-    <h1>Threads</h1>
-    <form id="newThread">
-      <input id="title" placeholder="Thread title" required>
-      <textarea id="content" placeholder="First post" required></textarea>
-      <button>Create Thread</button>
-    </form>
+<div class="hero-forums">
 
-    <ul id="threads"></ul>
+  <!-- CREATE THREAD -->
+  <div class="forums-entry">
+    <input id="title" class="forums-textbox" placeholder="Thread title">
+    <textarea id="content" class="forums-textbox" placeholder="Start the discussion..."></textarea>
+    <button id="create-thread" class="action-btn">Post</button>
   </div>
 
-  <script>
-    const token = localStorage.getItem("token");
-    const params = new URLSearchParams(window.location.search);
-    const category = params.get("category");
+  <!-- THREAD LIST -->
+  <div class="forums-post-wrapper">
+    <ul id="threads" class="forums-comments"></ul>
+  </div>
 
-    fetch(`/api/threads?category=${category}`)
-      .then(res => res.json())
-      .then(threads => {
-        const list = document.getElementById("threads");
-        threads.forEach(t => {
-          const li = document.createElement("li");
-          li.innerHTML = `<a href="thread.html?id=${t.id}">${t.title}</a> — by ${t.username}`;
-          list.appendChild(li);
-        });
-      });
+</div>
 
-    document.getElementById("newThread").onsubmit = async e => {
-      e.preventDefault();
-      await fetch("/api/threads", {
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          title: title.value,
-          content: content.value,
-          categoryId: category
-        })
-      });
-      location.reload();
-    };
-  </script>
+<script>
+var token = localStorage.getItem("token");
+var params = new URLSearchParams(window.location.search);
+var category = params.get("category");
+
+/* LOAD THREADS */
+fetch("/api/threads?category=" + category)
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    var list = document.getElementById("threads");
+    data.forEach(function(t) {
+      var li = document.createElement("li");
+      li.innerHTML =
+        '<a href="thread.html?id=' + t.id + '">' +
+        '<strong>' + t.title + '</strong>' +
+        '</a> — by ' + t.username;
+      list.appendChild(li);
+    });
+  });
+
+/* CREATE THREAD */
+document.getElementById("create-thread").onclick = function () {
+  if (!title.value || !content.value) return;
+
+  fetch("/api/threads", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + token
+    },
+    body: JSON.stringify({
+      title: title.value,
+      content: content.value,
+      categoryId: category
+    })
+  }).then(function() {
+    location.reload();
+  });
+};
+</script>
+
 </body>
 </html>
