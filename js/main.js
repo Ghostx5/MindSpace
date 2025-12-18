@@ -90,3 +90,19 @@ for (var i = 0; i < dots.length; i++) {
         });
     })(i);
 }
+
+// Add this to your main.js or create a new file
+document.addEventListener('DOMContentLoaded', function() {
+    // Force image loading
+    var images = document.querySelectorAll('img');
+    images.forEach(function(img) {
+        if (img.complete) return;
+        img.loading = 'eager';
+        // Force reload if broken
+        if (!img.naturalWidth && img.src) {
+            var src = img.src;
+            img.src = '';
+            img.src = src;
+        }
+    });
+});
