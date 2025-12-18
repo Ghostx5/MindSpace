@@ -735,8 +735,16 @@ p{
    LAYOUT
 ========================= */
 .hero-forums {
+    background-color:#202020;
+    padding: 30px;
+    border-radius: 30px;
     width: 70%;
     margin: 5em auto;
+    font-family: "Inter", sans-serif;
+    font-size: 0.9em;
+}
+.hero-forums ul{
+    text-decoration: none;
 }
 
 .forums-entry {

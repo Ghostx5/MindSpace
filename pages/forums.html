@@ -48,16 +48,37 @@
   </div>
 
   <script>
-    fetch("/api/categories")
-      .then(res => res.json())
-      .then(categories => {
-        const list = document.getElementById("categories");
-        categories.forEach(cat => {
-          const li = document.createElement("li");
-          li.innerHTML = `<a href="threads.html?category=${cat.id}">${cat.name}</a> — ${cat.description}`;
-          list.appendChild(li);
-        });
-      });
+// ---------------- LOAD CATEGORIES ----------------
+async function loadCategories() {
+  try {
+    const res = await fetch("http://localhost:3000/api/categories", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" }
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch categories: ${res.status}`);
+    }
+
+    const categories = await res.json();
+    const list = document.getElementById("categories");
+    list.innerHTML = ""; // Clear any existing items
+
+    categories.forEach(cat => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <a href="threads.html?category=${cat.id}">${cat.name}</a> — ${cat.description}
+      `;
+      list.appendChild(li);
+    });
+  } catch (err) {
+    console.error("Error loading categories:", err);
+  }
+}
+
+// Load categories on page load
+loadCategories();
+
   </script>
 </body>
 </html>

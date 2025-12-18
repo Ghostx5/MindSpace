@@ -37,12 +37,14 @@
 </div>
 
 <script>
+const titleInput = document.getElementById("title");
+const contentInput = document.getElementById("content");
 var token = localStorage.getItem("token");
 var params = new URLSearchParams(window.location.search);
 var category = params.get("category");
 
 /* LOAD THREADS */
-fetch("/api/threads?category=" + category)
+fetch("http://localhost:3000/api/threads?category=" + category)
   .then(function(res) { return res.json(); })
   .then(function(data) {
     var list = document.getElementById("threads");
@@ -60,7 +62,7 @@ fetch("/api/threads?category=" + category)
 document.getElementById("create-thread").onclick = function () {
   if (!title.value || !content.value) return;
 
-  fetch("/api/threads", {
+  fetch("http://localhost:3000/api/threads", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
