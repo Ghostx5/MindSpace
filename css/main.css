@@ -939,3 +939,34 @@ p{
     border: none;
     transition: background 0.2s ease;
 }
+.map{
+    color: #fff;
+}
+.world-map{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: max-content;
+    height: max-content;
+    min-height: 30em;
+    background-color: #1a191b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.svg{
+    width: 100vw;
+    height: 100vw;
+}
+
+path{
+    fill:#202020;
+    stroke:000000;
+}
+
+path:hover{
+    fill:#4a6e69;
+}
