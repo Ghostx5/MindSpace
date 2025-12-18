@@ -1,9 +1,37 @@
-const wrappers = Array.from(document.querySelectorAll('.disorder-wrapper'));
-const dots = Array.from(document.querySelectorAll('.dot'));
+// POLYFILL for classList operations (simplified version)
+if (!Element.prototype.classList && Object.defineProperty) {
+    Element.prototype.classList = {
+        add: function(className) {
+            if (this.className.indexOf(className) === -1) {
+                this.className += ' ' + className;
+            }
+        },
+        remove: function(className) {
+            this.className = this.className.replace(
+                new RegExp('(^|\\s)' + className + '(\\s|$)', 'g'), 
+                ' '
+            ).trim();
+        },
+        contains: function(className) {
+            return new RegExp('(^|\\s)' + className + '(\\s|$)').test(this.className);
+        }
+    };
+}
+
+// Get elements - use compatible methods
+const wrappers = document.querySelectorAll('.disorder-wrapper');
+const dots = document.querySelectorAll('.dot');
 const upArrow = document.getElementById('up-arrow');
 const downArrow = document.getElementById('down-arrow');
 
-let currentIndex = wrappers.findIndex(wrapper => wrapper.classList.contains('active'));
+// Find current index - compatible method (no findIndex)
+let currentIndex = -1;
+for (let i = 0; i < wrappers.length; i++) {
+    if (wrappers[i].classList.contains('active')) {
+        currentIndex = i;
+        break;
+    }
+}
 
 // Helper function to show a box with smooth animation
 function showBox(index) {
@@ -15,40 +43,50 @@ function showBox(index) {
     // Animate current box out
     currentBox.style.opacity = 0;
     currentBox.style.transform = 'translateY(20px)';
-    setTimeout(() => {
+    currentBox.style.webkitTransform = 'translateY(20px)'; // FIX: Safari prefix
+    setTimeout(function() {
         currentBox.style.display = 'none';
         currentBox.classList.remove('active');
-    }, 600); // match your CSS transition duration
+    }, 600);
 
     // Animate next box in
     nextBox.style.display = 'block';
-    setTimeout(() => {
+    setTimeout(function() {
         nextBox.style.opacity = 1;
         nextBox.style.transform = 'translateY(0)';
+        nextBox.style.webkitTransform = 'translateY(0)'; // FIX: Safari prefix
         nextBox.classList.add('active');
-    }, 600); // slight delay to trigger transition
+    }, 600);
 
     // Update dots
-    dots[currentIndex].classList.remove('active');
-    dots[index].classList.add('active');
+    if (dots[currentIndex]) dots[currentIndex].classList.remove('active');
+    if (dots[index]) dots[index].classList.add('active');
 
     currentIndex = index;
 }
 
-// Arrow clicks
-upArrow.addEventListener('click', () => {
-    let prevIndex = currentIndex - 1;
-    if (prevIndex < 0) prevIndex = wrappers.length - 1;
-    showBox(prevIndex);
-});
+// Arrow clicks - use traditional function syntax for compatibility
+if (upArrow) {
+    upArrow.addEventListener('click', function() {
+        var prevIndex = currentIndex - 1;
+        if (prevIndex < 0) prevIndex = wrappers.length - 1;
+        showBox(prevIndex);
+    });
+}
 
-downArrow.addEventListener('click', () => {
-    let nextIndex = currentIndex + 1;
-    if (nextIndex >= wrappers.length) nextIndex = 0;
-    showBox(nextIndex);
-});
+if (downArrow) {
+    downArrow.addEventListener('click', function() {
+        var nextIndex = currentIndex + 1;
+        if (nextIndex >= wrappers.length) nextIndex = 0;
+        showBox(nextIndex);
+    });
+}
 
-// Dot clicks
-dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => showBox(i));
-});
+// Dot clicks - use compatible loop (no forEach on NodeList in old IE)
+for (var i = 0; i < dots.length; i++) {
+    (function(index) {
+        dots[index].addEventListener('click', function() {
+            showBox(index);
+        });
+    })(i);
+}

@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up | MindSpace</title>
+    <title id>MindSpace</title>
     <link rel="icon" href="../assets/mindspace-logo.PNG" type="image/png">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/theme.css">
-</head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <body id="login">
 
 <div class="login-wrapper">
@@ -38,14 +40,15 @@
     </div>
 
     <div class="login-direct">
-        <button id="signup-btn">Sign Up</button>
+        <button class="login-btn" id="signup-btn">Sign Up</button>
     </div>
 
     <div id="msg" class="note"></div>
 </div>
 
 <script>
-document.getElementById("signup-btn").onclick = async () => {
+// FIX: Changed arrow function to traditional function for Safari compatibility
+document.getElementById("signup-btn").onclick = async function() {
     const usernameEl = document.getElementById("username-input");
     const emailEl = document.getElementById("email-input");
     const passwordEl = document.getElementById("password-input");
@@ -73,7 +76,7 @@ document.getElementById("signup-btn").onclick = async () => {
         if (res.ok) {
             msg.textContent = "Account created! Redirecting to login...";
             msg.style.color = "green";
-            setTimeout(() => {
+            setTimeout(function() { // FIX: Traditional function
                 window.location.href = "login.html";
             }, 1200);
         } else {

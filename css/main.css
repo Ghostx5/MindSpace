@@ -51,6 +51,7 @@ body {
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
     height: 22px;
     width: 3px;
     background-color: white;
@@ -62,6 +63,7 @@ body {
     left: 50%; 
     top: 40px;
     transform: translatex(-50%);
+    -webkit-transform: translatex(-50%);
     border-radius: 36px;
     box-shadow: #4a6e69 2px 5px;
     height: 60px;
@@ -70,7 +72,8 @@ body {
 .navbar ul {
     display: flex;
     list-style: none;
-    gap: 0;  
+    gap: 0;
+    -webkit-gap: 0;
     padding: 0 20px;                
 }
 .navbar ul li a {
@@ -80,10 +83,11 @@ body {
     font-style: normal;
     font-weight: Bold;
     transition: color 0.3s ease;
+    -webkit-transition: color 0.3s ease;
 }
 .navbar ul li {
     position: relative;
-    padding: 0 20px; /* spacing between text & divider */
+    padding: 0 20px;
 }
 .navbar ul li a:hover {
     color: white;             
@@ -92,12 +96,15 @@ body {
 .overlay-menu ul li {
     opacity: 0;
     transform: translateY(20px);
+    -webkit-transform: translateY(20px);
     transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
 }
 
 .overlay-menu.active ul li {
     opacity: 1;
     transform: translateY(0);
+    -webkit-transform: translateY(0);
 }
 
 .overlay-menu.active ul li:nth-child(1) { transition-delay: 0.1s; }
@@ -166,15 +173,6 @@ p{
     align-items: center;
 }
 
-
-
-
-
-
-
-
-
-
 #login{
     display: flex;
     justify-content: center;
@@ -192,7 +190,6 @@ p{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  /* ← STACKS everything vertically */
 }
 .backbutton-wrapper{
     display:flex;
@@ -251,13 +248,13 @@ p{
 }
 
 .login-logo{
-    width: 160px;        /* size of your black square */
+    width: 160px;
     height: 160px;
     background:#202020;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 12px;    /* optional, remove for a perfect square */
+    border-radius: 12px;
     margin: 0 0;
 }
 #login-logo{
@@ -278,7 +275,7 @@ p{
 .login-button{
     width: 100%;
 }
-#login-btn{
+.login-btn{
     margin: 10px 0 20px 0;
     border: none;
     background-color:#689891;
@@ -292,9 +289,10 @@ p{
 }
 .login-options{
     display:flex;
-    width: 60px;     /* container stays stable */
+    width: 60px;
     height: 60px;
     gap: 20px;
+    -webkit-gap: 20px;
     justify-content: center;
     align-items: center;
     margin: 5px 0;
@@ -303,12 +301,13 @@ p{
     background-color: #1a191b;
     
     padding: 20px;
-    display:flex;  /* perfect size */
+    display:flex;
     height: fit-content;
     border: 0.5px solid white;
     cursor: pointer;
     transition: transform .2s;
-    width: 80px;     /* ← consistent icon size */
+    -webkit-transition: transform .2s;
+    width: 80px;
     height: 30px;  
     object-fit: contain;
     border-radius:20px;
@@ -316,6 +315,7 @@ p{
 
 .login-option-img:hover {
     transform: scale(1.1);
+    -webkit-transform: scale(1.1);
 }
 .hero{
     margin: 100px 250px 50px;
@@ -327,14 +327,14 @@ p{
 
 }
 .cname{
-    font-family: "Monsterrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     color:#689891;
     font-size: 150px;
     margin: 20px 0;
 }
 
 #description1{
-    font-family: "Monsterrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     color:#d1cfc6;
     font-size: 50px;
     margin: 20px 0;
@@ -362,15 +362,6 @@ p{
     align-items: center;
 }
 
-
-
-
-
-
-
-
-
-
 .disorder{
     display: flex;
     justify-content: center;
@@ -391,11 +382,13 @@ p{
     max-width: 900px;
     min-width: 500px;
     transform: translateY(20px);
+    -webkit-transform: translateY(20px);
     transition: opacity 1s ease, transform 0.6s ease;
+    -webkit-transition: opacity 1s ease, -webkit-transform 0.6s ease;
     position: absolute;
 }
 .disorder-wrapper h1{
-    font-family: "Monsterrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 400;
     color: #ffffff;
     font-size: 60px;
@@ -414,11 +407,10 @@ p{
     display: block;
     opacity: 1;
     transform: translateY(0);
+    -webkit-transform: translateY(0);
     pointer-events: none;
-    position: relative; /* bring active box into normal flow */
+    position: relative;
 }
-
-
 
 .navigation-disorder{
     display:flex;
@@ -440,11 +432,11 @@ p{
 }
 .dots {
     display: flex;
-    flex-direction: column; /* stack vertically */
+    flex-direction: column;
     align-items: center;
-    gap: 15px;              /* space between dots */
+    gap: 15px;
+    -webkit-gap: 15px;
 }
-
 
 .dot {
     width: 30px;
@@ -454,6 +446,7 @@ p{
     border-radius: 50%;
     margin: 5px;
     transition: background 0.3s ease;
+    -webkit-transition: background 0.3s ease;
     cursor: pointer;
 }
 
@@ -470,7 +463,6 @@ p{
     font-weight: Bold;
 }
 
-
 .hero{
     margin: 100px 250px 50px;
     text-align: center;
@@ -481,14 +473,14 @@ p{
 
 }
 .cname{
-    font-family: "Monsterrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     color:#689891;
     font-size: 150px;
     margin: 20px 0;
 }
 
 #description1{
-    font-family: "Monsterrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     color:#d1cfc6;
     font-size: 50px;
     margin: 20px 0;
@@ -516,8 +508,8 @@ p{
     align-items: center;
 }
 .box{
-    background: var(--primary-color);
-    box-shadow: 5px 3px var(--secondary-color);
+    background: var(--primary-color, #689891);
+    box-shadow: 5px 3px var(--secondary-color, #4a6e69);
     border-radius: 30px;
     padding: 20px;
     margin: 40px;
@@ -548,24 +540,21 @@ p{
     text-decoration: underline;
     color: var(--white);
 }
-/* One animation, full lifecycle */
+
 @keyframes scrollFade {
-  0% {         /* before entering */
+  0% {
     opacity: 0;
     scale: 0.5;
   }
-
-  30% {        /* fully appeared */
+  30% {
     opacity: 1;
     scale: 1;
   }
-
-  70% {        /* still visible */
+  70% {
     opacity: 1;
     scale: 1;
   }
-
-  100% {       /* exiting viewport */
+  100% {
     opacity: 0;
     scale: 0.5;
   }
@@ -573,8 +562,7 @@ p{
 
 .obj {
   animation: scrollFade linear both;
-  animation-timeline: view();     /* uses scroll position */
-  animation-range: entry 0% exit 100%;
+  -webkit-animation: scrollFade linear both;
 }
 
 
@@ -583,6 +571,8 @@ p{
     width: 90%;
     display: flex;
     overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 .carousel::-webkit-scrollbar{
     display: none;
@@ -592,7 +582,9 @@ p{
     justify-content: center;
     align-items: center;
     gap: 1em;
+    -webkit-gap: 1em;
     animation: spin-right 20s infinite linear;
+    -webkit-animation: spin-right 20s infinite linear;
     padding-right: 1em;
     padding-bottom: 1em;
 }
@@ -601,7 +593,9 @@ p{
     justify-content: center;
     align-items: center;
     gap: 1em;
+    -webkit-gap: 1em;
     animation: spin-left 20s infinite linear;
+    -webkit-animation: spin-left 20s infinite linear;
     padding-right: 1em; 
     padding-bottom: 1em;
 }
@@ -623,13 +617,31 @@ p{
 .hero{
     margin-top: 80px;
 }
+
 @keyframes spin-right{
-    from {translate: 0;}
-    to {translate: -100%;}
+    from { 
+        -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        transform: translateX(0);
+    }
+    to { 
+        -webkit-transform: translateX(-100%);
+        -moz-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
 }
+
 @keyframes spin-left{
-    from {translate: -100%;}
-    to {translate: 0;}
+    from { 
+        -webkit-transform: translateX(-100%);
+        -moz-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+    to { 
+        -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        transform: translateX(0);
+    }
 }
 
 .card p{
@@ -657,6 +669,7 @@ p{
     margin: 0.2em 0.2em 0.2em 0;
     font-family: "Inter", sans-serif;
     gap: 0.2em;
+    -webkit-gap: 0.2em;
     text-align: left;
     justify-content: left;
 }
@@ -688,4 +701,203 @@ p{
 }
 #kmini{
     width: fit-content;
+}
+
+.forums-entry-userinfo,
+.forums-post-userinfo {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    -webkit-gap: 1em;
+    margin-bottom: 1em;
+}
+
+.forums-pfp,
+.forums-post-pfp {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.forums-user-details,
+.forums-post-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "Inter", sans-serif;
+    font-size: 0.9em;
+}
+
+.forums-username {
+    font-size: 1rem;
+    margin: 0;
+    color: white;
+}
+
+.forums-time,
+.forums-post-time {
+    font-size: 0.8em;
+    color: #aaa;
+    margin: 0;
+}
+
+.hero-forums {
+    width: 70%;
+    margin: 5em auto;
+}
+
+.forums-entry {
+    background-color: #292929;
+    border-radius: 3em;
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    -webkit-gap: 1.5em;
+}
+
+.forums-entry-coloumn {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    -webkit-gap: 2em;
+    justify-content: flex-start;
+}
+
+.forums-textbox-container {
+    flex: 1;
+}
+
+.forums-textbox {
+    width: 100%;
+    min-height: 4em;
+    max-height: 30em;
+    resize: none;
+
+    background-color: #1a191b;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 1.5em;
+    padding: 1.25em;
+
+    font-family: "Inter", sans-serif;
+    font-size: 0.9em;
+    box-sizing: border-box;
+}
+
+.forums-post-wrapper {
+    margin-top: 3em;
+}
+
+.forums-comments {
+    margin-left: 3em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    -webkit-gap: 1em;
+}
+
+.forums-comment {
+    background-color: #292929;
+    border-radius: 2em;
+    padding: 3em;
+    position: relative;
+}
+
+.forums-comment::before {
+    content: "";
+    position: absolute;
+    left: -2.5em;
+    top: -2.5em;
+    width: 2em;
+    height: 7.5em;
+    border-left: 2px solid #555;
+    border-bottom: 2px solid #555;
+    border-bottom-left-radius: 6px;
+}
+
+.forums-post-content {
+    margin: 1em 0;
+}
+
+.forum-entry-actions,
+.forums-post-actions {
+    display: flex;
+    gap: 1em;
+    -webkit-gap: 1em;
+    align-items: center;
+}
+
+.forums-postbutton {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    -webkit-gap: 0.3em;
+    background: #292929;
+    color: white;
+    border: none;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+    font-size: 0.9em;
+    transition: background 0.2s ease;
+    -webkit-transition: background 0.2s ease;
+}
+
+.action-btn:hover {
+    background: #3f3f3f;
+}
+
+.action-btn-img {
+    max-width: 2em;
+    pointer-events: none;
+}
+
+.post-divider {
+    border: none;
+    border-top: 1px solid #555;
+    margin: 1em 0;
+}
+
+.comment-input {
+    background-color: #292929;
+    margin: 3em 0;
+    padding: 3em;
+    border-radius: 3em;
+}
+
+.comment-input textarea {
+    width: 100%;
+    resize: none;
+    background: #1a191b;
+    color: white;
+    border-radius: 1em;
+    padding: 1em;
+}
+
+.hidden {
+    display: none;
+}
+
+#submit-forum-post-arrow,
+#submit-comment-post-arrow {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    background: transparent;
+    border: none;
+}
+
+#forums-action-btn-image {
+    font-family: "Inter", sans-serif;
+    font-size: 1.25em;
+    color: #aaa;
 }

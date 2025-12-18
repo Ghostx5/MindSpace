@@ -35,14 +35,15 @@
     </div>
 
     <div class="login-direct">
-        <button id="login-btn">Login</button>
+        <button class="login-btn" id="login-btn">Login</button>
     </div>
 
     <div id="msg" class="note"></div>
 </div>
 
 <script>
-document.getElementById("login-btn").onclick = async () => {
+// FIX: Changed arrow function to traditional function for Safari compatibility
+document.getElementById("login-btn").onclick = async function() {
     const emailEl = document.getElementById("email-input");
     const passwordEl = document.getElementById("password-input");
     const msg = document.getElementById("msg");
@@ -66,8 +67,14 @@ document.getElementById("login-btn").onclick = async () => {
         const data = await res.json();
 
         if (res.ok) {
-            localStorage.setItem("token", data.token);
-            localStorage.setItem("username", data.username);
+            // FIX: Add try-catch for localStorage (Safari private mode)
+            try {
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("username", data.username);
+            } catch (e) {
+                console.log("LocalStorage not available (Safari private mode)");
+                // You might want to use sessionStorage or cookies as fallback
+            }
             window.location.href = "forums.html";
         } else {
             msg.textContent = data.message || "Login failed.";

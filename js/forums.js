@@ -1,3 +1,22 @@
+/* FIX: Add polyfill for Element.closest() for older browsers */
+if (!Element.prototype.matches) {
+    Element.prototype.matches = 
+        Element.prototype.msMatchesSelector || 
+        Element.prototype.webkitMatchesSelector;
+}
+
+if (!Element.prototype.closest) {
+    Element.prototype.closest = function(s) {
+        var el = this;
+        if (!document.documentElement.contains(el)) return null;
+        do {
+            if (el.matches(s)) return el;
+            el = el.parentElement || el.parentNode;
+        } while (el !== null && el.nodeType === 1);
+        return null;
+    };
+}
+
 function autoResize(el) {
     const MAX_HEIGHT = 500; // px
     el.style.height = 'auto';
@@ -11,10 +30,13 @@ function autoResize(el) {
 }
 
 // Initialize existing textareas
-document.querySelectorAll('.forums-textbox').forEach(textarea => {
-    textarea.addEventListener('input', () => autoResize(textarea));
-    autoResize(textarea);
-});
+var textareas = document.querySelectorAll('.forums-textbox');
+for (var i = 0; i < textareas.length; i++) { // FIX: Use for loop instead of forEach
+    textareas[i].addEventListener('input', function() {
+        autoResize(this);
+    });
+    autoResize(textareas[i]);
+}
 
 // --- Toggle comment input box ---
 function toggleCommentInput(postWrapper) {
@@ -26,16 +48,18 @@ function toggleCommentInput(postWrapper) {
     }
 }
 
-// Delegate comment button clicks (works for dynamically added posts)
-document.addEventListener('click', e => {
-    if (e.target.closest('.action-btn') && e.target.closest('.action-btn').querySelector('img[src*="comment"]')) {
-        const postWrapper = e.target.closest('.forums-post-wrapper');
+// Delegate comment button clicks
+document.addEventListener('click', function(e) { // FIX: Traditional function
+    var target = e.target;
+    var actionBtn = target.closest('.action-btn');
+    if (actionBtn && actionBtn.querySelector('img[src*="comment"]')) {
+        const postWrapper = actionBtn.closest('.forums-post-wrapper');
         if (postWrapper) toggleCommentInput(postWrapper);
     }
 });
 
 // --- Submit comment ---
-document.addEventListener('click', e => {
+document.addEventListener('click', function(e) { // FIX: Traditional function
     if (e.target.classList.contains('submit-comment')) {
         const btn = e.target;
         const inputBox = btn.previousElementSibling.querySelector('textarea');
@@ -56,7 +80,7 @@ document.addEventListener('click', e => {
                 </div>
             </div>
             <div class="forums-post-content">
-                <p class="forums-post-text">${text}</p>
+                <p class="forums-post-text">${text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
             </div>
         `;
 
@@ -69,7 +93,7 @@ document.addEventListener('click', e => {
 // --- Submit new forum post ---
 const postBtn = document.querySelector('.forums-postbutton .action-btn');
 if (postBtn) {
-    postBtn.addEventListener('click', () => {
+    postBtn.addEventListener('click', function() { // FIX: Traditional function
         const entryWrapper = postBtn.closest('.forums-entry');
         const textarea = entryWrapper.querySelector('.forums-textbox');
         const text = textarea.value.trim();
@@ -90,7 +114,7 @@ if (postBtn) {
                     </div>
                 </div>
                 <div class="forums-post-content">
-                    <p class="forums-post-text">${text}</p>
+                    <p class="forums-post-text">${text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
                 </div>
                 <hr class="post-divider">
                 <div class="forums-post-actions">
