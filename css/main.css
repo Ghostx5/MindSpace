@@ -5,6 +5,9 @@ html {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
 }
+ul,ol{
+    list-style-type: none;
+}
 
 .hamburger{
     display:none;
@@ -735,17 +738,99 @@ p{
    LAYOUT
 ========================= */
 .hero-forums {
-    background-color:#202020;
-    padding: 30px;
+    background-color:#689891;
+    padding: 30px 60px;
     border-radius: 30px;
     width: 70%;
     margin: 5em auto;
     font-family: "Inter", sans-serif;
     font-size: 0.9em;
+    box-shadow: #4a6e69 2px 5px;
+
+}
+.hero-forums h1{
+    font-size: 4em;
+    color: white;
+    margin: 0;
 }
 .hero-forums ul{
+    font-size: 2em;
+    color: white;
+    margin: 0;
+}
+.hero-forums h2{
+    font-size: 1em;
+    color: white;
+    margin: 2px 10px 0 10px;
+}
+.hero-forums h3{
+    font-size: 2em;
+    color: white;
+    margin: 0;
+}
+.hero-forums p{
+    font-size: 2em;
+    color: white;
+    margin: 1em;
+}
+
+.hero-forums p, .hero-forums .comment-item {
+    font-size: 2em;
+    font-family: "Inter", sans-serif;
+    color: white;
+}
+
+
+.hero-forums a {
+    margin: 0;
+    text-decoration: none; /* removes underline */
+    color: inherit;         /* optional: keeps the text color same as parent */
+}
+.hero-forums-general{
+    margin: 100px 200px;
+}
+
+
+/* Optional: change color on hover */
+.hero-forums a:hover {
+    transition: 200ms;
+    color:black; /* or any color you like */
     text-decoration: none;
 }
+.thread-item{
+    background-color:#689891;
+    padding: 30px 60px;
+    border-radius: 30px;
+}
+.comment-item{
+    margin: 0;
+    font-size: 2em;
+    font-family: "Inter", sans-serif;
+    color: white;
+}
+.toast {
+  visibility: hidden; /* hidden by default */
+  min-width: 250px;
+  background-color: #ff4d4f;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  padding: 12px;
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Inter", sans-serif;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+}
+
 
 .forums-entry {
     background-color: #292929;
@@ -795,10 +880,8 @@ p{
 }
 
 .forums-comments {
-    margin-left: 3em;
     display: flex;
     flex-direction: column;
-    gap: 1em;
 }
 
 .forums-comment {
