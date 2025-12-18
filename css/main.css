@@ -317,15 +317,6 @@ p{
 .login-option-img:hover {
     transform: scale(1.1);
 }
-.hero{
-    margin: 100px 250px 50px;
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-}
 .cname{
     font-family: "Monsterrat", sans-serif;
     color:#689891;
@@ -460,25 +451,12 @@ p{
 .dot.active {
     background: white;
 }
-
 .arrow {
     cursor: pointer;
     user-select: none;
 }
-
 .Bold{
     font-weight: Bold;
-}
-
-
-.hero{
-    margin: 100px 250px 50px;
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
 }
 .cname{
     font-family: "Monsterrat", sans-serif;
@@ -576,11 +554,13 @@ p{
   animation-timeline: view();     /* uses scroll position */
   animation-range: entry 0% exit 100%;
 }
-
+#testimonials-container{
+    margin:0!important;
+}
 
 .carousel{
     margin:20px auto;
-    width: 90%;
+    width: 100%;
     display: flex;
     overflow-x: auto;
 }
@@ -619,9 +599,6 @@ p{
     display: flex;
     justify-content: space-between; 
     flex-direction: column;
-}
-.hero{
-    margin-top: 80px;
 }
 @keyframes spin-right{
     from {translate: 0;}
@@ -797,13 +774,40 @@ p{
 .thread-item{
     background-color:#689891;
     padding: 30px 60px;
+    margin: 20px;
+    list-style: none;
+    text-decoration: none;
     border-radius: 30px;
+    font-family: "Inter", sans-serif;
+}
+.thread-item a{ 
+    font-family: "Inter", sans-serif;
+    list-style-type: none;
+    text-decoration: none;
+    color: white;
+}
+#threads-list a:hover {
+    color:#4a6e69; /* or any color you want for hover */
+    text-decoration: none;
 }
 .comment-item{
     margin: 0;
-    font-size: 2em;
+    font-size: 0.5em;
     font-family: "Inter", sans-serif;
     color: white;
+    list-style: none;
+}
+.hero-forums h3 {
+    font-size: 1.5rem; /* smaller than default h2 */
+    font-weight: normal; /* optional: make it lighter */
+    margin: 0.5em 0;
+}
+
+.hero-forums p {
+    margin-left: 10px;
+    font-size: 0.9rem; /* smaller than default paragraph */
+    line-height: 1.4;  /* optional: improves readability */
+    margin: 2em 0 1em 0;
 }
 .toast {
   visibility: hidden; /* hidden by default */
@@ -1111,4 +1115,8 @@ button:disabled{
     background-color: #1d1a20;
     border: 1px #443d4b solid;
     cursor:default;
+}
+#bpalogo{
+    width: 80%
+
 }

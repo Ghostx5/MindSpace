@@ -34,7 +34,7 @@
       <div class="overlay-menu">
         <ul>
           <li><a href="../pages/mental-health-info.html">Mental Health Info</a></li>
-          <li><a href="../pages/blog-posts.html">Blog Posts</a></li>
+          <li><a href="../pages/blogs.html">Blog Posts</a></li>
           <li><a href="../pages/forums.html">Forums</a></li>
           <li><a href="../pages/testimonials.html">Testimonials</a></li>
         </ul>
@@ -51,7 +51,7 @@
 // ---------------- LOAD CATEGORIES ----------------
 async function loadCategories() {
   try {
-    const res = await fetch("http://localhost:3000/api/categories", {
+    const res = await fetch("/api/categories", {
       method: "GET",
       headers: { "Content-Type": "application/json" }
     });

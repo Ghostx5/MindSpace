@@ -36,7 +36,7 @@
       <div class="overlay-menu">
         <ul>
           <li><a href="../pages/mental-health-info.html">Mental Health Info</a></li>
-          <li><a href="../pages/blog-posts.html">Blog Posts</a></li>
+          <li><a href="../pages/blogs.html">Blog Posts</a></li>
           <li><a href="../pages/forums.html">Forums</a></li>
           <li><a href="../pages/testimonials.html">Testimonials</a></li>
         </ul>
@@ -70,7 +70,7 @@ var params = new URLSearchParams(window.location.search);
 var id = params.get("id");
 
 /* LOAD THREAD */
-fetch("http://localhost:3000/api/threads/" + id)
+fetch("/api/threads/" + id)
   .then(function(res) { return res.json(); })
   .then(function(data) {
     document.getElementById("title").textContent = data.thread.title;
@@ -92,7 +92,7 @@ fetch("http://localhost:3000/api/threads/" + id)
 document.getElementById("reply-btn").onclick = function () {
   if (!reply.value) return;
 
-  fetch("http://localhost:3000/api/threads/reply", {
+  fetch("/api/threads/reply", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
