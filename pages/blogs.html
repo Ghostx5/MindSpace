@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blogs | MindSpace</title>
+    <link rel="icon" href="../assets/mindspace-logo.PNG" type="image/png">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="header-wrapper">
+        <div class="logo-wrapper">
+            <a class="logo" href="../index.html"><img src="../assets/logo-withtname.svg"></a>
+        </div>
+        <div class="nav-wrapper">
+            <nav class="navbar">
+                <ul>
+                    <li><a href="../pages/mental-health-info.html">Mental Health Info</a></li>
+                    <li><a href="../pages/blogs.html">Blog Posts</a></li>
+                    <li><a href="../pages/forums.html">Forums</a></li>
+                    <li><a href="../pages/testimonials.html">Testimonials</a></li>
+                    <li><a href="https://www.therapynotes.com">Counseling</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="login-btn-wrapper">
+            <a href="../pages/login.html" class="login-direct">Login</a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="overlay-menu">
+            <ul>
+                <li><a href="../pages/mental-health-info.html">Mental Health Info</a></li>
+                <li><a href="../pages/blogs.html">Blog Posts</a></li>
+                <li><a href="../pages/forums.html">Forums</a></li>
+                <li><a href="../pages/testimonials.html">Testimonials</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="hero-forums">
+    <div class="forums-post-wrapper">
+        <h1>Blogs</h1>
+        <ul id="blogs" class="forums-comments">
+            <!-- Blog links will be appended here -->
+        </ul>
+    </div>
+</div>
+
+<script>
+    async function loadBlogs() {
+        const list = document.getElementById("blogs");
+
+        try {
+            const res = await fetch("/api/blogs", {
+                method: "GET",
+                headers: { "Content-Type": "application/json" }
+            });
+
+            if (!res.ok) throw new Error("Failed to fetch blogs");
+
+            const blogs = await res.json();
+
+            list.innerHTML = "";
+
+            if (blogs.length === 0) {
+                list.innerHTML = "<li>No blog posts yet.</li>";
+                return;
+            }
+
+            blogs.forEach(b => {
+                const li = document.createElement("li");
+                li.innerHTML = `<a href="blog.html?id=${b.id}">${b.title}</a>
+                    <span style="opacity:0.6">by ${b.username}</span>`;
+                list.appendChild(li);
+            });
+
+        } catch (err) {
+            console.error(err);
+            list.innerHTML = "<li>Error loading blogs.</li>";
+        }
+    }
+
+    loadBlogs();
+</script>
+</body>
+</html>
