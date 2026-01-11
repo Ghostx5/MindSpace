@@ -112,7 +112,7 @@
     const data = await res.json();
     if (res.ok) {
       alert("Blog post created!");
-      window.location.href = `/blog.html?id=${data.id}`;
+      window.location.href = `/pages/blog.html?id=${data.id}`;
     } else {
       alert(data.message || "Failed to submit");
     }
