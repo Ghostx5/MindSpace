@@ -144,6 +144,10 @@ p{
 .carousel::-webkit-scrollbar{
     display: none;
 }
+.carousel, 
+.carousel * {
+  pointer-events: none;
+}
 .group{
     display: flex;
     justify-content: center;
