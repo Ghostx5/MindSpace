@@ -184,13 +184,13 @@ p{
 .hero{
     margin-top: 80px;
 }
-@keyframes spin-right{
-    from {translate: 0;}
-    to {translate: -100%;}
+@keyframes spin-right {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
-@keyframes spin-left{
-    from {translate: -100%;}
-    to {translate: 0;}
+@keyframes spin-left {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
 }
 
 .card p{
@@ -246,7 +246,4 @@ p{
 .profile-testimonial{
     max-width: 4em;
     height: auto;
-}
-#kmini{
-    width: fit-content;
 }
