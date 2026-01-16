@@ -568,10 +568,6 @@ p{
 .carousel::-webkit-scrollbar{
     display: none;
 }
-.carousel, 
-.carousel * {
-  pointer-events: none;
-}
 .group{
     display: flex;
     justify-content: center;
@@ -605,20 +601,17 @@ p{
     justify-content: space-between; 
     flex-direction: column;
 }
-.hero{
-    margin-top: 80px;
+@keyframes spin-right{
+    from {translate: 0;}
+    to {translate: -100%;}
 }
-@keyframes spin-right {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-@keyframes spin-left {
-  from { transform: translateX(-50%); }
-  to   { transform: translateX(0); }
+@keyframes spin-left{
+    from {translate: -100%;}
+    to {translate: 0;}
 }
 
 .card p{
-    font-size: 0.358em;  
+    font-size: 0.3em;  
     margin: 0;
     text-align: left;
     color: white;
@@ -670,6 +663,9 @@ p{
 .profile-testimonial{
     max-width: 4em;
     height: auto;
+}
+#kmini{
+    width: fit-content;
 }
 /* =========================
    USER INFO (THREAD / REPLY)*/
