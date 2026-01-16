@@ -667,8 +667,7 @@ p{
     width: fit-content;
 }
 /* =========================
-   USER INFO (THREAD / REPLY)
-========================= */
+   USER INFO (THREAD / REPLY)*/
 .forums-entry-userinfo,
 .forums-post-userinfo {
     display: flex;
@@ -709,8 +708,7 @@ p{
 }
 
 /* =========================
-   LAYOUT
-========================= */
+   LAYOUT*/
 .hero-forums {
     background-color:#689891;
     padding: 30px 60px;
@@ -854,8 +852,7 @@ p{
 }
 
 /* =========================
-   INPUTS
-========================= */
+   INPUTS*/
 .forums-textbox {
     width: 100%;
     min-height: 4em;
@@ -874,8 +871,7 @@ p{
 }
 
 /* =========================
-   POSTS / THREADS / REPLIES
-========================= */
+   POSTS / THREADS / REPLIES*/
 .forums-post-wrapper {
     margin-top: 3em;
 }
@@ -910,8 +906,7 @@ p{
 }
 
 /* =========================
-   ACTION BUTTONS
-========================= */
+   ACTION BUTTONS*/
 .forum-entry-actions,
 .forums-post-actions {
     display: flex;
@@ -950,8 +945,7 @@ p{
 }
 
 /* =========================
-   DIVIDERS
-========================= */
+   DIVIDERS*/
 .post-divider {
     border: none;
     border-top: 1px solid #555;
@@ -959,8 +953,7 @@ p{
 }
 
 /* =========================
-   COMMENT INPUT
-========================= */
+   COMMENT INPUT*/
 .comment-input {
     background-color: #292929;
     margin: 3em 0;
@@ -982,8 +975,7 @@ p{
 }
 
 /* =========================
-   ICON ROTATIONS
-========================= */
+   ICON ROTATIONS*/
 #submit-forum-post-arrow,
 #submit-comment-post-arrow {
     transform: rotate(90deg);
@@ -991,9 +983,8 @@ p{
     border: none;
 }
 
-/* =========================
-   MISC
-========================= */
+/* ========================= 
+   MISC*/
 #forums-action-btn-image {
     font-family: "Inter", sans-serif;
     font-size: 1.25em;
@@ -1018,8 +1009,8 @@ p{
 path {
     fill: white!important;
     stroke: #202020;
-    transition: fill 0.2s; /* explicitly say "fill" */
-    cursor: pointer;       /* optional: shows pointer on hover */
+    transition: fill 0.2s; 
+    cursor: pointer;      
     pointer-events: all;  
 }
 .hotline-container h1{
