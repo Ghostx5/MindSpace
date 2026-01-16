@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Blogs | MindSpace</title>
+    <title>Blog Post | MindSpace</title>
     <link rel="icon" href="../assets/mindspace-logo.PNG" type="image/png">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/theme.css">
@@ -48,48 +48,38 @@
 
 <div class="hero-forums">
     <div class="forums-post-wrapper">
-        <h1>Blogs</h1>
-        <ul id="blogs" class="forums-comments">
-            <!-- Blog links will be appended here -->
-        </ul>
+        <h1 id="title"></h1>
+        <p id="author"></p>
+        <div id="content"></div>
     </div>
 </div>
 
 <script>
-    async function loadBlogs() {
-        const list = document.getElementById("blogs");
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    const titleEl = document.getElementById("title");
+    const authorEl = document.getElementById("author");
+    const contentEl = document.getElementById("content");
 
-        try {
-            const res = await fetch("/api/blogs", {
-                method: "GET",
-                headers: { "Content-Type": "application/json" }
+    if (!id) {
+        titleEl.textContent = "Blog not found";
+    } else {
+        fetch(`/api/blogs/${id}`)
+            .then(res => {
+                if (!res.ok) throw new Error("Blog not found");
+                return res.json();
+            })
+            .then(data => {
+                titleEl.textContent = data.title;
+                authorEl.textContent = "By " + data.username;
+                contentEl.innerHTML = data.content; // assumes backend returns HTML-safe content
+            })
+            .catch(err => {
+                titleEl.textContent = "Blog not found";
+                authorEl.textContent = "";
+                contentEl.textContent = "";
             });
-
-            if (!res.ok) throw new Error("Failed to fetch blogs");
-
-            const blogs = await res.json();
-
-            list.innerHTML = "";
-
-            if (blogs.length === 0) {
-                list.innerHTML = "<li>No blog posts yet.</li>";
-                return;
-            }
-
-            blogs.forEach(b => {
-                const li = document.createElement("li");
-                li.innerHTML = `<a href="blog.html?id=${b.id}">${b.title}</a>
-                    <span style="opacity:0.6">by ${b.username}</span>`;
-                list.appendChild(li);
-            });
-
-        } catch (err) {
-            console.error(err);
-            list.innerHTML = "<li>Error loading blogs.</li>";
-        }
     }
-
-    loadBlogs();
 </script>
 </body>
 </html>
