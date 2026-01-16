@@ -79,14 +79,19 @@ body {
     font-family: "Inter", sans-serif;
     font-style: normal;
     font-weight: Bold;
-    transition: color 0.3s ease;
+    padding: 10px 12px;
+    border-radius: 20px;               /* pill shape */
+    transition: 
+        background 0.15s ease-in-out,
+        transform 0.2s ease-in-out;
 }
 .navbar ul li {
     position: relative;
     padding: 0 20px; /* spacing between text & divider */
 }
 .navbar ul li a:hover {
-    color: white;             
+    background: #4a6e69; /* soft white glow */
+    transform: translateY(-1px);           
 }
 
 .overlay-menu ul li {
@@ -278,7 +283,7 @@ p{
 .login-button{
     width: 100%;
 }
-#login-btn{
+.login-btn{
     margin: 10px 0 20px 0;
     border: none;
     background-color:#689891;
@@ -316,15 +321,6 @@ p{
 
 .login-option-img:hover {
     transform: scale(1.1);
-}
-.hero{
-    margin: 100px 250px 50px;
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
 }
 .cname{
     font-family: "Monsterrat", sans-serif;
@@ -377,7 +373,7 @@ p{
     position: relative;
     align-items: center;
     width: 100%;
-    margin: 20px 0 50px 0;
+    margin: 20px 0 5px 0;
     overflow: hidden;
 }
 .disorder-wrapper{
@@ -465,20 +461,8 @@ p{
     cursor: pointer;
     user-select: none;
 }
-
 .Bold{
     font-weight: Bold;
-}
-
-
-.hero{
-    margin: 100px 250px 50px;
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
 }
 .cname{
     font-family: "Monsterrat", sans-serif;
@@ -576,7 +560,9 @@ p{
   animation-timeline: view();     /* uses scroll position */
   animation-range: entry 0% exit 100%;
 }
-
+#testimonials-container{
+    margin:0!important;
+}
 
 .carousel{
     margin:20px auto;
@@ -619,9 +605,6 @@ p{
     display: flex;
     justify-content: space-between; 
     flex-direction: column;
-}
-.hero{
-    margin-top: 80px;
 }
 @keyframes spin-right{
     from {translate: 0;}
@@ -691,53 +674,182 @@ p{
 #kmini{
     width: fit-content;
 }
-
-.forums-entry-userinfo {
+/* =========================
+   USER INFO (THREAD / REPLY)*/
+.forums-entry-userinfo,
+.forums-post-userinfo {
     display: flex;
     align-items: center;
     gap: 1em;
     margin-bottom: 1em;
 }
 
-.forums-pfp {
+.forums-pfp,
+.forums-post-pfp {
     width: 3em;
     height: 3em;
     border-radius: 50%;
     object-fit: cover;
+    flex-shrink: 0;
 }
 
-.forums-user-details {
+.forums-user-details,
+.forums-post-details {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-family: "Inter", sans-serif;
+    font-size: 0.9em;
 }
 
 .forums-username {
-    font-size: 1.2em;
+    font-size: 1rem;
     margin: 0;
     color: white;
 }
 
+.forums-time,
 .forums-post-time {
     font-size: 0.8em;
     color: #aaa;
     margin: 0;
 }
 
-.hero-forums{
+/* =========================
+   LAYOUT*/
+.hero-forums {
+    background-color:#689891;
+    padding: 30px 60px;
+    border-radius: 30px;
     width: 70%;
     margin: 5em auto;
+    font-family: "Inter", sans-serif;
+    font-size: 0.9em;
+    box-shadow: #4a6e69 2px 5px;
+
 }
-.forums-entry{
+.hero-forums h1{
+    font-size: 4em;
+    color: white;
+    margin: 0;
+}
+.hero-forums ul{
+    font-size: 2em;
+    color: white;
+    margin: 0;
+}
+.hero-forums h2{
+    font-size: 1em;
+    color: white;
+    margin: 2px 10px 0 10px;
+}
+.hero-forums h3{
+    font-size: 2em;
+    color: white;
+    margin: 0;
+}
+.hero-forums p{
+    font-size: 2em;
+    color: white;
+    margin: 1em;
+}
+
+.hero-forums p, .hero-forums .comment-item {
+    font-size: 2em;
+    font-family: "Inter", sans-serif;
+    color: white;
+}
+
+
+.hero-forums a {
+    margin: 0;
+    text-decoration: none; /* removes underline */
+    color: inherit;         /* optional: keeps the text color same as parent */
+}
+.hero-forums-general{
+    margin: 100px 200px;
+}
+
+
+/* Optional: change color on hover */
+.hero-forums a:hover {
+    transition: 200ms;
+    color:black; /* or any color you like */
+    text-decoration: none;
+}
+.thread-item{
+    background-color:#689891;
+    padding: 30px 60px;
+    margin: 20px;
+    list-style: none;
+    text-decoration: none;
+    border-radius: 30px;
+    font-family: "Inter", sans-serif;
+}
+.thread-item a{ 
+    font-family: "Inter", sans-serif;
+    list-style-type: none;
+    text-decoration: none;
+    color: white;
+}
+#threads-list a:hover {
+    color:#4a6e69; /* or any color you want for hover */
+    text-decoration: none;
+}
+.comment-item{
+    margin: 0;
+    font-size: 0.5em;
+    font-family: "Inter", sans-serif;
+    color: white;
+    list-style: none;
+}
+.hero-forums h3 {
+    font-size: 1.5rem; /* smaller than default h2 */
+    font-weight: normal; /* optional: make it lighter */
+    margin: 0.5em 0;
+}
+
+.hero-forums p {
+    margin-left: 10px;
+    font-size: 0.9rem; /* smaller than default paragraph */
+    line-height: 1.4;  /* optional: improves readability */
+    margin: 2em 0 1em 0;
+}
+.toast {
+  visibility: hidden; /* hidden by default */
+  min-width: 250px;
+  background-color: #ff4d4f;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  padding: 12px;
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Inter", sans-serif;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.forums-entry {
     background-color: #292929;
     border-radius: 3em;
     padding: 3em;
     display: flex;
-    justify-content: space-evenly;
     flex-direction: column;
+    gap: 1.5em;
 }
-.forums-entry-coloumn{
-    display:flex;
+
+.forums-entry-coloumn {
+    display: flex;
     flex-direction: row;
     gap: 2em;
     justify-content: flex-start;
@@ -830,6 +942,54 @@ p{
     display: flex;
     gap: 1em; /* space between buttons */
     margin-top: 0.5em;
+/* =========================
+   POSTS / THREADS / REPLIES*/
+.forums-post-wrapper {
+    margin-top: 3em;
+}
+
+.forums-comments {
+    display: flex;
+    flex-direction: column;
+}
+
+.forums-comment {
+    background-color: #292929;
+    border-radius: 2em;
+    padding: 3em;
+    position: relative;
+}
+
+/* Reply connector line */
+.forums-comment::before {
+    content: "";
+    position: absolute;
+    left: -2.5em;
+    top: -2.5em;
+    width: 2em;
+    height: 7.5em;
+    border-left: 2px solid #555;
+    border-bottom: 2px solid #555;
+    border-bottom-left-radius: 6px;
+}
+
+.forums-post-content {
+    margin: 1em 0;
+}
+
+/* =========================
+   ACTION BUTTONS*/
+.forum-entry-actions,
+.forums-post-actions {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+.forums-postbutton {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
 }
 
 .action-btn {
@@ -911,6 +1071,22 @@ p{
   display: none;
 }
 .comment-input{
+.action-btn-img {
+    max-width: 2em;
+    pointer-events: none;
+}
+
+/* =========================
+   DIVIDERS*/
+.post-divider {
+    border: none;
+    border-top: 1px solid #555;
+    margin: 1em 0;
+}
+
+/* =========================
+   COMMENT INPUT*/
+.comment-input {
     background-color: #292929;
     margin: 3em 0;
     padding: 3em;
@@ -938,6 +1114,35 @@ p{
     background: transparent;
     border: none;
     transition: background 0.2s ease;
+
+.comment-input textarea {
+    width: 100%;
+    resize: none;
+    background: #1a191b;
+    color: white;
+    border-radius: 1em;
+    padding: 1em;
+}
+
+.hidden {
+    display: none;
+}
+
+/* =========================
+   ICON ROTATIONS*/
+#submit-forum-post-arrow,
+#submit-comment-post-arrow {
+    transform: rotate(90deg);
+    background: transparent;
+    border: none;
+}
+
+/* ========================= 
+   MISC*/
+#forums-action-btn-image {
+    font-family: "Inter", sans-serif;
+    font-size: 1.25em;
+    color: #aaa;
 }
 .world-map{
     position: absolute;
@@ -1055,4 +1260,8 @@ button:disabled{
     background-color: #1d1a20;
     border: 1px #443d4b solid;
     cursor:default;
+}
+#bpalogo{
+    width: 80%
+
 }
