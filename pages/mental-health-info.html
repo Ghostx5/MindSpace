@@ -5,6 +5,11 @@
     <title id>MindSpace</title>
     <link rel="icon" href="../assets/mindspace-logo.PNG" type="image/png">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"></head>
+
 
 </head>
 
@@ -17,16 +22,17 @@
         </div>
         <div class="nav-wrapper">
             <nav class="navbar">
-                <ul>
+                <ul> 
                     <li><a href="../pages/mental-health-info.html">Mental Health Info</a></li>
-                    <li><a href="../pages/blog-posts.html">Blog Posts</a></li>
+                    <li><a href="../pages/blogs.html">Blog Posts</a></li>
                     <li><a href="../pages/forums.html">Forums</a></li>
                     <li><a href="../pages/testimonials.html">Testimonials</a></li>
+                    <li><a href="https://www.therapynotes.com">Counseling</a></li>
                 </ul>
             </nav>
         </div>
-       <div class="login-wrapper">
-            <a href="pages/login.html" class="login-button">Login</a>
+       <div class="login-btn-wrapper">
+            <a href="../pages/login.html" class="login-direct">Login</a>
         </div>
         <div class="hamburger">
             <span></span>
@@ -36,17 +42,99 @@
         <div class="overlay-menu">
             <ul>
                 <li><a href="../pages/mental-health-info.html">Mental Health Info</a></li>
-                <li><a href="../pages/blog-posts.html">Blog Posts</a></li>
+                <li><a href="../pages/blogs.html">Blog Posts</a></li>
                 <li><a href="../pages/forums.html">Forums</a></li>
                 <li><a href="../pages/testimonials.html">Testimonials</a></li>
             </ul>
         </div>
     </div>
     </header>
-    <img id="kmini" src="../assets/kmini.svg">
+    <div class="disorder"> 
+        <div class="navigation-disorder">
+            <div id="up-arrow" class="arrow">↑</div>
+            <div class="dots">
+                <span class="dot active" data-target="anxiety"></span>
+                <span class="dot" data-target="depression"></span>
+                <span class="dot" data-target="ocd"></span>
+                <span class="dot" data-target="ptsd"></span>
+                <span class="dot" data-target="bipolar"></span>
+                <span class="dot" data-target="adhd"></span>
+                <span class="dot" data-target="eatingdisorder"></span>
+            </div>
+            <div id="down-arrow" class="arrow">↓</div>
+        </div>
+        <div class="disorder-wrapper active" id="anxiety">
+            <h1 class="disorder-label">
+                <span class="Bold">Anxiety</span>
+                Disorder
+            </h1>
+            <p class="disorder-description">
+                Anxiety disorders involve persistent feelings of worry, tension, or fear that can affect daily activities.
+                People may notice physical signs of stress, difficulty relaxing, or racing thoughts. While everyone experiences anxiety occasionally, this condition can feel more constant and overwhelming. Support, understanding, and healthy coping tools can make a meaningful difference.
+            </p>
+        </div>
+        <div class="disorder-wrapper" id="depression">
+            <h1 class="disorder-label">
+                <span class="Bold">Depression</span>
+                Disorder
+            </h1>
+            <p class="disorder-description">
+                Depression can affect mood, energy levels, motivation, and daily functioning.
+                Individuals may feel persistently sad, disconnected, or unable to enjoy activities they used to like. It’s more than occasional sadness—depressive disorders can influence many areas of life. Compassionate support and consistent help play an important role in recovery.
+            </p>
+        </div>
+        <div class="disorder-wrapper" id="ocd">
+            <h1 class="disorder-label">
+                <span class="Bold">OCD</span>
+                Disorder
+            </h1>
+            <p class="disorder-description">
+                OCD involves recurring thoughts or urges paired with repetitive behaviors meant to reduce distress.These patterns are difficult to control and can interfere with daily routines. With understanding and proper strategies, individuals can learn healthier ways to manage these cycles.
+            </p>
+        </div>
+        <div class="disorder-wrapper" id="ptsd">
+            <h1 class="disorder-label">
+                <span class="Bold">PTSD/Truama-Related</span>
+                Disorder
+            </h1>
+            <p class="disorder-description">
+                Trauma-related conditions can develop after experiencing or witnessing deeply distressing events. People may face intrusive memories, heightened alertness, or emotional numbness. These reactions are valid responses to overwhelming experiences, and healing often begins with a safe, supportive environment.
+            </p>
+        </div>
+        <div class="disorder-wrapper" id="bipolar">
+            <h1 class="disorder-label">
+                <span class="Bold">Bipolar Disorder</span>
+                Disorder
+            </h1>
+            <p class="disorder-description">
+                Bipolar disorders involve shifts in mood, energy, and activity levels. People may experience periods of low motivation or sadness, followed by phases of increased energy or elevated mood. Understanding these patterns helps create stability and reduces the challenges that come with them.
+            </p>
+        </div>
+        <div class="disorder-wrapper" id="adhd">
+            <h1 class="disorder-label">
+                <span class="Bold">ADHD</span>
+                Disorder
+            </h1>
+            <p class="disorder-description">
+                ADHD can affect focus, organization, impulse control, and activity levels. It presents differently for everyone—some may feel scattered or overwhelmed, while others struggle with staying still or managing time. Supportive guidance can help people build structure and confidence.
+            </p>
+        </div>
+        <div class="disorder-wrapper" id="eatingdisorder">
+            <h1 class="disorder-label">
+                <span class="Bold">Eating Disorder</span>
+                Disorder
+            </h1>
+            <p class="disorder-description">
+                Eating disorders involve complex relationships with food, body image, and self-worth. They can affect emotional, mental, and physical well-being. Healing often involves building supportive connections and learning healthier patterns over time.
+            </p>
+        </div>
+    </div>
+    <script src="../js/main.js"></script>
+
 </body>
 
 
 </html>
+
 
 

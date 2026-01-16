@@ -1,0 +1,12 @@
+:root{
+    --primary-color: #689891;
+    --secondary-color: #4a6e69;
+    --black: #1a191b;
+    --white: #ffffff;
+    --grey: #d1cfc6;
+}
+
+:root{
+    --font-main: 'Montserrat', sans-serif;
+    --font-secondary: 'Inter', sans-serif;
+}
