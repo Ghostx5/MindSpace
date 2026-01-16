@@ -105,6 +105,23 @@ document.getElementById("create-thread").onclick = function () {
   });
 };
 </script>
+<script>
+(function() {
+    const token = localStorage.getItem("token");
+    const loginBtn = document.getElementById("loginBtn");
+
+    if (token) {
+        loginBtn.textContent = "Log out";
+        loginBtn.removeAttribute("href");
+        loginBtn.style.cursor = "pointer";
+
+        loginBtn.addEventListener("click", () => {
+            localStorage.removeItem("token");
+            location.reload();
+        });
+    }
+})();
+</script>
 
 </body>
 </html>
