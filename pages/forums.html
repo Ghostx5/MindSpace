@@ -1,72 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title id>MindSpace</title>
-    <link rel="icon" href="../assets/mindspace-logo.PNG" type="image/png">
-    <link rel="stylesheet" href="../css/main.css">
-
+  <meta charset="UTF-8">
+  <title>Forums | MindSpace</title>
+  <link rel="icon" href="../assets/mindspace-logo.PNG" type="image/png">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/theme.css">
 </head>
-
-<body>
-   <header>
+<body id="forums">
+  <header>
     <div class="header-wrapper">
-        <div class="logo-wrapper">
-        <a class="logo" href="../index.html" ><img src="../assets/logo-withtname.svg"></a>
-        </div>
-        <div class="nav-wrapper">
-            <nav class="navbar">
-                <ul>
-                    <li><a href="../pages/mental-health-info.html">Mental Health Info</a></li>
-                    <li><a href="../pages/blog-posts.html">Blog Posts</a></li>
-                    <li><a href="../pages/forums.html">Forums</a></li>
-                    <li><a href="../pages/testimonials.html">Testimonials</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="login-wrapper">
-            <a href="pages/login.html" class="login-button">Login</a>
-        </div>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="overlay-menu">
-            <ul>
-                <li><a href="../pages/mental-health-info.html">Mental Health Info</a></li>
-                <li><a href="../pages/blog-posts.html">Blog Posts</a></li>
-                <li><a href="../pages/forums.html">Forums</a></li>
-                <li><a href="../pages/testimonials.html">Testimonials</a></li>
-            </ul>
-        </div>
+      <div class="logo-wrapper">
+        <a class="logo" href="../index.html"><img src="../assets/logo-withtname.svg"></a>
+      </div>
+      <div class="nav-wrapper">
+        <nav class="navbar">
+          <ul>
+            <li><a href="../pages/mental-health-info.html">Mental Health Info</a></li>
+            <li><a href="../pages/blogs.html">Blog Posts</a></li>
+            <li><a href="../pages/forums.html">Forums</a></li>
+            <li><a href="../pages/testimonials.html">Testimonials</a></li>
+            <li><a href="https://www.therapynotes.com">Counseling</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="login-btn-wrapper">
+        <a href="../pages/login.html" class="login-direct">Login</a>
+      </div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="overlay-menu">
+        <ul>
+          <li><a href="../pages/mental-health-info.html">Mental Health Info</a></li>
+          <li><a href="../pages/blogs.html">Blog Posts</a></li>
+          <li><a href="../pages/forums.html">Forums</a></li>
+          <li><a href="../pages/testimonials.html">Testimonials</a></li>
+        </ul>
+      </div>
     </div>
-    </header>
-    <p>
-        Him boisterous invitation dispatched had connection inhabiting projection. By mutual an mr danger garret edward an. Diverted as strictly exertion addition no disposal by stanhill. This call wife do so sigh no gate felt. You and abode spite order get. Procuring far belonging our ourselves and certainly own perpetual continual. It elsewhere of sometimes or my certainty. Lain no as five or at high. Everything travelling set how law literature.
+  </header>
 
-Of resolve to gravity thought my prepare chamber so. Unsatiable entreaties collecting may sympathize nay interested instrument. If continue building numerous of at relation in margaret. Lasted engage roused mother an am at. Other early while if by do to. Missed living excuse as be. Cause heard fat above first shall for. My smiling to he removal weather on anxious.
+  <div class="hero-forums">
+    <h1>Forums</h1>
+    <ul id="categories"></ul>
+  </div>
 
-It sportsman earnestly ye preserved an on. Moment led family sooner cannot her window pulled any. Or raillery if improved landlord to speaking hastened differed he. Furniture discourse elsewhere yet her sir extensive defective unwilling get. Why resolution one motionless you him thoroughly. Noise is round to in it quick timed doors. Written address greatly get attacks inhabit pursuit our but. Lasted hunted enough an up seeing in lively letter. Had judgment out opinions property the supplied.
+  <script>
+// ---------------- LOAD CATEGORIES ----------------
+async function loadCategories() {
+  try {
+    const res = await fetch("/api/categories", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" }
+    });
 
-At distant inhabit amongst by. Appetite welcomed interest the goodness boy not. Estimable education for disposing pronounce her. John size good gay plan sent old roof own. Inquietude saw understood his friendship frequently yet. Nature his marked ham wished.
+    if (!res.ok) {
+      throw new Error(`Failed to fetch categories: ${res.status}`);
+    }
 
-Extremely we promotion remainder eagerness enjoyment an. Ham her demands removal brought minuter raising invited gay. Contented consisted continual curiosity contained get sex. Forth child dried in in aware do. You had met they song how feel lain evil near. Small she avoid six yet table china. And bed make say been then dine mrs. To household rapturous fulfilled attempted on so.
+    const categories = await res.json();
+    const list = document.getElementById("categories");
+    list.innerHTML = ""; // Clear any existing items
 
-Impossible considered invitation him men instrument saw celebrated unpleasant. Put rest and must set kind next many near nay. He exquisite continued explained middleton am. Voice hours young woody has she think equal. Estate moment he at on wonder at season little. Six garden result summer set family esteem nay estate. End admiration mrs unreserved discovered comparison especially invitation.
+    categories.forEach(cat => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <a href="threads.html?category=${cat.id}">${cat.name}</a> — ${cat.description}
+      `;
+      list.appendChild(li);
+    });
+  } catch (err) {
+    console.error("Error loading categories:", err);
+  }
+}
 
-Excited him now natural saw passage offices you minuter. At by asked being court hopes. Farther so friends am to detract. Forbade concern do private be. Offending residence but men engrossed shy. Pretend am earnest offered arrived company so on. Felicity informed yet had admitted strictly how you.
+// Load categories on page load
+loadCategories();
 
-Next his only boy meet the fat rose when. Do repair at we misery wanted remove remain income. Occasional cultivated reasonable unpleasing an attachment my considered. Having ask and coming object seemed put did admire figure. Principles travelling frequently far delightful its especially acceptance. Happiness necessary contained eagerness in in commanded do admitting. Favourable continuing difficulty had her solicitude far. Nor doubt off widow all death aware offer. We will up able in both do sing.
-
-Article evident arrived express highest men did boy. Mistress sensible entirely am so. Quick can manor smart money hopes worth too. Comfort produce husband boy her had hearing. Law others theirs passed but wishes. You day real less till dear read. Considered use dispatched melancholy sympathize discretion led. Oh feel if up to till like.
-
-Unpacked now declared put you confined daughter improved. Celebrated imprudence few interested especially reasonable off one. Wonder bed elinor family secure met. It want gave west into high no in. Depend repair met before man admire see and. An he observe be it covered delight hastily message. Margaret no ladyship endeavor ye to settling.
-
-    </p>
+  </script>
 </body>
-
-
 </html>
-
-
