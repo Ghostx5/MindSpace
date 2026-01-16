@@ -74,14 +74,19 @@ body {
     font-family: "Inter", sans-serif;
     font-style: normal;
     font-weight: Bold;
-    transition: color 0.3s ease;
+    padding: 12px 18px;
+    border-radius: 20px;               /* pill shape */
+    transition: 
+        background 0.15s ease-in-out,
+        transform 0.2s ease-in-out;
 }
 .navbar ul li {
     position: relative;
     padding: 0 20px; /* spacing between text & divider */
 }
 .navbar ul li a:hover {
-    color: white;             
+    background: darkgreen; /* soft white glow */
+    transform: translateY(-1px);           
 }
 
 .overlay-menu ul li {
