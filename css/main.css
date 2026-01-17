@@ -14,31 +14,38 @@ body {
     margin: 0;
     padding: 0;
 }
-.header-wrapper{
-    align-content: center;
-    align-items: center;
-    justify-content: space-between;
+.header-wrapper {
     display: flex;
-    margin: 40px 60px;
+    align-items: center;
+    justify-content: space-between; /* logo left, login right */
+    width: 100%;
+    max-width: 1200px; /* keeps everything contained */
+    padding: 20px 40px; /* safer than margin for sticky nav */
+    box-sizing: border-box;
+    position: relative;
 }
-.nav-wrapper{
-    width: fit-content;
+.nav-wrapper {
+    flex: 1;                    /* take remaining space */
+    display: flex;
+    justify-content: center;
 }
-.login-btn-wrapper{
-    display:flex;
-    flex-wrap: wrap;
+.login-btn-wrapper {
+    position: absolute;
+    left:1550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: #689891;
     box-shadow: #4a6e69 2px 5px;
     border-radius: 36px;
-    border: none;
     font-family: "Inter", sans-serif;
-    font-weight: Bold;
-    align-content: center;
-    justify-content: center;
+    font-weight: bold;
     font-size: 15px;
     height: 60px;
     width: 120px;
+    flex-shrink: 0;  /* prevents button from being pushed off-screen */
 }
+
 .login-direct{
     display: inline;
     text-decoration: none;
@@ -56,23 +63,33 @@ body {
     background-color: white;
     border-radius: 2px;
 }
-.navbar{
+.navbar {
+    display: flex;
+    justify-content: center;
+    position: absolute;        /* absolute positioning to truly center */
+    transform: translateX(+20%); /* perfect horizontal centering */
+
+    align-items: center;
     background: #689891;
-    position: fixed;
-    left: 50%; 
-    top: 40px;
-    transform: translatex(-50%);
     border-radius: 36px;
     box-shadow: #4a6e69 2px 5px;
     height: 60px;
-    align-content: center;
+    width: 100%;
+    max-width: 800px;
+    position: sticky; /* safe in Safari */
+    top: 20px;        /* push down slightly to prevent cut-off */
+    z-index: 999;
+    padding: 0 20px;  /* adds inner spacing */
 }
 .navbar ul {
     display: flex;
     list-style: none;
-    gap: 0;  
-    padding: 0 20px;                
+    padding: 0;
+    margin: 0;
+    flex-wrap: nowrap;  /* prevent stacking in Safari */
+    align-items: center;
 }
+
 .navbar ul li a {
     text-decoration: none;
     color: white;
@@ -83,7 +100,7 @@ body {
 }
 .navbar ul li {
     position: relative;
-    padding: 0 20px; /* spacing between text & divider */
+    padding: 0 20px;
 }
 .navbar ul li a:hover {
     color: white;             
@@ -107,15 +124,14 @@ body {
 .overlay-menu.active ul li:nth-child(5) { transition-delay: 0.5s; }
 .overlay-menu.active ul li:nth-child(6) { transition-delay: 0.6s; }
 
-.logo-wrapper{
+.logo-wrapper {
     display: flex;
+    flex-shrink: 0;
 }
-.logo img{
-    display: inline;
-    width: fit-content;
+.logo img {
     height: 60px;
-    left: 10px;
-    z-index: 1000;
+    width: auto; /* Safari-safe */
+    display: block;
 }
 p{
     color: white;
@@ -564,6 +580,8 @@ p{
     width: 100%;
     display: flex;
     overflow-x: auto;
+        align-items: flex-start; /* prevents vertical stretching */
+
 }
 .carousel::-webkit-scrollbar{
     display: none;
@@ -576,6 +594,9 @@ p{
     animation: spin-right 20s infinite linear;
     padding-right: 1em;
     padding-bottom: 1em;
+    flex-wrap: nowrap;              /* STOP stacking */
+    width: -webkit-fit-content;     /* Safari needs this */
+    width: fit-content;
 }
 .group2{
     display: flex;
@@ -585,6 +606,9 @@ p{
     animation: spin-left 20s infinite linear;
     padding-right: 1em; 
     padding-bottom: 1em;
+    flex-wrap: nowrap;              /* STOP stacking */
+    width: -webkit-fit-content;     /* Safari needs this */
+    width: fit-content;
 }
 .card{
     background: #689891;
@@ -600,6 +624,11 @@ p{
     display: flex;
     justify-content: space-between; 
     flex-direction: column;
+    
+}
+.card{
+    min-width: 5em;     /* IMPORTANT for Safari */
+    flex-shrink: 0;     /* keep this horizontal */
 }
 @keyframes spin-right{
     from {translate: 0;}
