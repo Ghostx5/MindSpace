@@ -79,14 +79,19 @@ body {
     font-family: "Inter", sans-serif;
     font-style: normal;
     font-weight: Bold;
-    transition: color 0.3s ease;
+    padding: 10px 12px;
+    border-radius: 20px;               /* pill shape */
+    transition: 
+        background 0.15s ease-in-out,
+        transform 0.2s ease-in-out;
 }
 .navbar ul li {
     position: relative;
     padding: 0 20px; /* spacing between text & divider */
 }
 .navbar ul li a:hover {
-    color: white;             
+    background: #4a6e69; /* soft white glow */
+    transform: translateY(-1px);           
 }
 
 .overlay-menu ul li {
@@ -368,7 +373,7 @@ p{
     position: relative;
     align-items: center;
     width: 100%;
-    margin: 20px 0 50px 0;
+    margin: 20px 0 5px 0;
     overflow: hidden;
 }
 .disorder-wrapper{
@@ -451,6 +456,7 @@ p{
 .dot.active {
     background: white;
 }
+
 .arrow {
     cursor: pointer;
     user-select: none;
@@ -612,6 +618,7 @@ p{
 .card p{
     font-size: 0.3em;  
     margin: 0;
+    margin-left: 1.5em;
     text-align: left;
     color: white;
     text-overflow: ellipsis; 
@@ -625,13 +632,14 @@ p{
 #quote{
     font-size: 2em;         
     line-height: 1;
+    max-width: 0.8em;
     font-family: "Montserrat", sans-serif;
 }
 
 .card > span {
     display: flex;          
     align-items: center;
-    margin: 0.2em 0.2em 0.2em 0;
+    margin: 0.2em 0.2em 0.2em 0.5em;
     font-family: "Inter", sans-serif;
     gap: 0.2em;
     text-align: left;
@@ -667,8 +675,7 @@ p{
     width: fit-content;
 }
 /* =========================
-   USER INFO (THREAD / REPLY)
-========================= */
+   USER INFO (THREAD / REPLY)*/
 .forums-entry-userinfo,
 .forums-post-userinfo {
     display: flex;
@@ -709,8 +716,7 @@ p{
 }
 
 /* =========================
-   LAYOUT
-========================= */
+   LAYOUT*/
 .hero-forums {
     background-color:#689891;
     padding: 30px 60px;
@@ -848,14 +854,9 @@ p{
     gap: 2em;
     justify-content: flex-start;
 }
-
 .forums-textbox-container {
     flex: 1;
 }
-
-/* =========================
-   INPUTS
-========================= */
 .forums-textbox {
     width: 100%;
     min-height: 4em;
@@ -873,9 +874,76 @@ p{
     box-sizing: border-box;
 }
 
+
+#forums.pfp{
+    font-size: 0.3em;  
+    margin: 0;
+    margin-left: 1.5em;
+    text-align: left;
+    color: white;
+    text-overflow: ellipsis; 
+    flex: 1; 
+    font-family: "Inter", sans-serif;
+    font-weight: Bold;
+}
+
+#forum-entry-actions > div:not(.forums-postbutton){
+    display: flex;
+    gap: 1em;
+}
+.forums-postbutton {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+.forums-post-userinfo {
+    display: flex;
+    align-items: center;
+    gap: 1em; /* space between pfp and details */
+}
+
+.forums-post-pfp {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.forums-post-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.forums-username {
+    font-size: 1rem;
+    margin: 0;
+    color: white;
+}
+.forums-post-content{
+    margin: 1em 0;
+}
+.forums-time {
+    font-size: 0.8rem;
+    margin: 0;
+    color: #ccc;
+}
+.forums-post{
+    background-color: #292929;
+    border-radius: 3em;
+    padding: 3em;
+    display: flex;
+    margin: 3em auto;
+    display: flex;
+    flex-direction: column;
+}   
+.forums-post-actions {
+    display: flex;
+    gap: 1em; /* space between buttons */
+    margin-top: 0.5em;
 /* =========================
-   POSTS / THREADS / REPLIES
-========================= */
+   POSTS / THREADS / REPLIES*/
 .forums-post-wrapper {
     margin-top: 3em;
 }
@@ -910,8 +978,7 @@ p{
 }
 
 /* =========================
-   ACTION BUTTONS
-========================= */
+   ACTION BUTTONS*/
 .forum-entry-actions,
 .forums-post-actions {
     display: flex;
@@ -944,14 +1011,73 @@ p{
     background: #3f3f3f;
 }
 
+.action-btn .count {
+    font-weight: bold;
+}
+.post-divider {
+    border: none;        /* remove default border */
+    border-top: 1px solid #555; /* horizontal line */
+    margin: 1em 0;     /* spacing above and below */
+}
+.action-btn-img{
+    background-color: none;
+    max-width: 2em;
+}
+.forums-user-details,.forums-post-details {
+    font-family: "Inter", sans-serif;
+    font-size: 0.9em;
+}
+.forums-post-wrapper{
+}
+.forums-post-wrapper .comment{
+    transform: translatex(+10%);
+    background-color:#292929;
+    padding: 3em;
+    border-radius: 2em;
+}
+.forums-post-wrapper .comment::before {
+    content: "";
+    position: absolute;
+
+    /* position to the left of comment */
+    left: -2.5em;
+    top: -2.5em;
+    border-bottom-left-radius: 6px;
+
+
+    width: 2em;   /* horizontal part */
+    height: 7.5em;    /* vertical part */
+
+    border-left: 2px solid #555;
+    border-bottom: 2px solid #555;
+}
+.forums-comments {
+  margin-left: 3em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.comment-input textarea {
+  width: 100%;
+  resize: none;
+  background: #1a191b;
+  color: white;
+  border-radius: 1em;
+  padding: 1em;
+}
+
+.hidden {
+  display: none;
+}
+.comment-input{
 .action-btn-img {
     max-width: 2em;
     pointer-events: none;
 }
 
 /* =========================
-   DIVIDERS
-========================= */
+   DIVIDERS*/
 .post-divider {
     border: none;
     border-top: 1px solid #555;
@@ -959,14 +1085,35 @@ p{
 }
 
 /* =========================
-   COMMENT INPUT
-========================= */
+   COMMENT INPUT*/
 .comment-input {
     background-color: #292929;
     margin: 3em 0;
     padding: 3em;
     border-radius: 3em;
 }
+#forums-action-btn-image{
+    font-family: "Inter", sans-serif;
+    font-size: 1.25em;
+    color:#aaa;
+}
+#submit-forum-post-arrow{
+    transform: rotate(90deg); 
+}
+.submit-comment{
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+}
+.submit-comment img{
+    background: transparent;
+    pointer-events: none;
+}
+#submit-comment-post-arrow{
+    transform: rotate(90deg); 
+    background: transparent;
+    border: none;
+    transition: background 0.2s ease;
 
 .comment-input textarea {
     width: 100%;
@@ -982,8 +1129,7 @@ p{
 }
 
 /* =========================
-   ICON ROTATIONS
-========================= */
+   ICON ROTATIONS*/
 #submit-forum-post-arrow,
 #submit-comment-post-arrow {
     transform: rotate(90deg);
@@ -991,9 +1137,8 @@ p{
     border: none;
 }
 
-/* =========================
-   MISC
-========================= */
+/* ========================= 
+   MISC*/
 #forums-action-btn-image {
     font-family: "Inter", sans-serif;
     font-size: 1.25em;
